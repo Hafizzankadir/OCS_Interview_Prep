@@ -1,0 +1,2498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personnel File — OCS Interview Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:   #101a24;
+    --navy:        #16222f;
+    --navy-panel:  #1c2b3a;
+    --olive:       #6b7355;
+    --olive-dim:   #4d5540;
+    --brass:       #b8964a;
+    --brass-bright:#d4b364;
+    --paper:       #ece6d6;
+    --paper-dim:   #cfc7ae;
+    --ink:         #221d12;
+    --redstamp:    #9a4433;
+    --redstamp-bright:#c1553f;
+    --line:        rgba(236,230,214,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 700px at 15% -10%, rgba(107,115,85,0.12), transparent 60%),
+      radial-gradient(1000px 600px at 100% 110%, rgba(184,150,74,0.08), transparent 55%),
+      var(--navy-deep);
+    color:var(--paper);
+    font-family:'Libre Baskerville', Georgia, serif;
+    min-height:100vh;
+    padding:36px 18px 60px;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image: repeating-linear-gradient(135deg, rgba(236,230,214,0.02) 0px, rgba(236,230,214,0.02) 1px, transparent 1px, transparent 34px);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{max-width:920px;margin:0 auto;position:relative;z-index:1;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:16px;
+    border-bottom:2px solid var(--brass);
+    padding-bottom:16px;
+    margin-bottom:18px;
+    flex-wrap:wrap;
+  }
+  .title-block{flex:1;min-width:260px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:.22em;
+    font-size:11px;
+    color:var(--brass-bright);
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  h1{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    font-size:clamp(24px,4.4vw,38px);
+    margin:0;
+    color:var(--paper);
+    line-height:1.05;
+  }
+  .subtitle{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--paper-dim);
+    margin-top:8px;
+    letter-spacing:.02em;
+  }
+  .serial{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--olive);
+    text-align:right;
+    line-height:1.6;
+    white-space:nowrap;
+  }
+
+  /* ---------- MAIN NAV ---------- */
+  .main-nav{
+    display:flex;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .main-nav button{
+    flex:1;
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:13px;
+    background:var(--navy-panel);
+    color:var(--paper-dim);
+    border:1px solid var(--line);
+    padding:12px 10px;
+    cursor:pointer;
+    border-radius:3px;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .main-nav button.active{
+    background:var(--olive-dim);
+    color:var(--paper);
+    border-color:var(--brass);
+  }
+
+  .page{display:none;}
+  .page.active{display:block;}
+
+  /* ---------- CATEGORY TABS ---------- */
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:18px;
+  }
+  .tab{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    background:var(--navy-panel);
+    border:1px solid var(--line);
+    border-bottom:none;
+    color:var(--paper-dim);
+    padding:9px 14px 8px;
+    cursor:pointer;
+    border-radius:5px 5px 0 0;
+    position:relative;
+    top:1px;
+    transition:background .15s, color .15s;
+  }
+  .tab:hover{color:var(--paper);}
+  .tab.active{
+    background:var(--olive-dim);
+    color:var(--paper);
+    border-color:var(--brass);
+  }
+  .tab .count{color:var(--brass-bright); margin-left:4px;}
+
+  /* ---------- PANELS (shared box style) ---------- */
+  .panel{
+    background:var(--navy-panel);
+    border:1px solid var(--line);
+    border-top:3px solid var(--brass);
+    border-radius:2px;
+    padding:18px 20px;
+    margin-bottom:18px;
+  }
+  .panel-title{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    color:var(--brass-bright);
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- SESSION TIMER ---------- */
+  .timer-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .timer-display{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:30px;
+    font-weight:600;
+    color:var(--paper);
+    letter-spacing:.03em;
+    min-width:120px;
+  }
+  .timer-display.over{color:var(--redstamp-bright);}
+  .timer-target{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--paper-dim);
+  }
+  .customize-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--paper-dim);
+  }
+  .customize-row input{
+    width:56px;
+    background:var(--navy);
+    border:1px solid var(--line);
+    color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:5px 6px;
+    border-radius:3px;
+    text-align:center;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    background:var(--navy);
+    color:var(--paper-dim);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    cursor:pointer;
+    border-radius:3px;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .btn:hover{color:var(--paper); border-color:var(--brass);}
+  .btn.primary{
+    background:var(--brass);
+    color:var(--ink);
+    border-color:var(--brass);
+    font-weight:600;
+  }
+  .btn.primary:hover{background:var(--brass-bright);}
+  .btn.danger{border-color:var(--redstamp);}
+  .btn.danger:hover{color:var(--redstamp-bright); border-color:var(--redstamp-bright);}
+  .btn:disabled{opacity:.4; cursor:not-allowed;}
+
+  /* ---------- DECK / DRAW ---------- */
+  .deck-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .deck-status{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--paper-dim);
+  }
+  .deck-status b{color:var(--brass-bright); font-weight:600;}
+  .draw-btn{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:15px;
+    background:var(--brass);
+    color:var(--ink);
+    border:none;
+    padding:14px 26px;
+    border-radius:3px;
+    cursor:pointer;
+    transition:transform .08s ease, background .15s ease;
+    box-shadow:0 2px 0 #8a6f34;
+  }
+  .draw-btn:hover{background:var(--brass-bright);}
+  .draw-btn:active{transform:translateY(2px); box-shadow:0 0 0 #8a6f34;}
+  .reset-link{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--olive);
+    text-decoration:underline;
+    cursor:pointer;
+    background:none;
+    border:none;
+    padding:0;
+  }
+  .reset-link:hover{color:var(--paper-dim);}
+
+  /* ---------- CARD ---------- */
+  .card-stage{ min-height:60px; }
+  .card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    padding:0;
+    animation:deal .42s cubic-bezier(.2,.8,.3,1);
+    box-shadow:0 18px 40px -12px rgba(0,0,0,0.55), 0 2px 0 rgba(0,0,0,0.2);
+    overflow:hidden;
+  }
+  @keyframes deal{
+    from{ opacity:0; transform:translateY(-18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .card-head{
+    background:var(--ink);
+    color:var(--paper);
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .card-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass-bright);
+  }
+  .card-file{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--paper-dim);
+    letter-spacing:.05em;
+  }
+  .qtimer-bar{
+    background:var(--olive-dim);
+    padding:9px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    border-bottom:1px solid rgba(0,0,0,0.15);
+  }
+  .qtimer-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+  }
+  .qtimer-display{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:19px;
+    font-weight:600;
+    color:var(--paper);
+    min-width:64px;
+  }
+  .qtimer-btns{display:flex; gap:6px; margin-left:auto;}
+  .qtimer-btns .btn{padding:5px 10px; font-size:10.5px;}
+
+  .card-body{padding:26px 26px 22px;}
+  .q-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--redstamp);
+    margin-bottom:10px;
+  }
+  .q-text{
+    font-family:'Libre Baskerville', Georgia, serif;
+    font-style:italic;
+    font-size:clamp(19px,2.6vw,24px);
+    line-height:1.42;
+    margin:0 0 20px;
+    color:var(--ink);
+  }
+  .divider{
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 11px);
+    opacity:.35;
+    margin:18px 0;
+  }
+  .fw-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .fw-label{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:11.5px;
+    color:var(--redstamp);
+    white-space:nowrap;
+  }
+  .fw-value{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    font-size:13.5px;
+    color:var(--ink);
+    background:rgba(154,68,51,0.09);
+    padding:3px 9px;
+    border-radius:3px;
+    border:1px solid rgba(154,68,51,0.25);
+    cursor:pointer;
+  }
+  .fw-value:hover{background:rgba(154,68,51,0.18);}
+  .fw-hint{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--olive-dim);
+  }
+  .tips-label{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:11.5px;
+    color:var(--olive-dim);
+    margin-bottom:8px;
+  }
+  ul.tips{ margin:0; padding-left:0; list-style:none; }
+  ul.tips li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:8px;
+    font-size:14.5px;
+    line-height:1.55;
+    color:var(--ink);
+  }
+  ul.tips li::before{
+    content:"–";
+    position:absolute;
+    left:0;
+    color:var(--olive);
+    font-weight:700;
+  }
+
+  .empty-state{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--paper-dim);
+    text-align:center;
+    padding:36px 10px;
+    border:1px dashed var(--line);
+    border-radius:3px;
+  }
+
+  /* ---------- CAMERA ---------- */
+  .camera-body{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .camera-video-wrap{
+    background:var(--navy);
+    border:1px solid var(--line);
+    border-radius:3px;
+    width:280px;
+    max-width:100%;
+    aspect-ratio:4/3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+    flex-shrink:0;
+  }
+  .camera-video-wrap video{
+    width:100%; height:100%;
+    object-fit:cover;
+    transform:scaleX(-1);
+  }
+  .camera-placeholder{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--olive);
+    text-align:center;
+    padding:10px;
+  }
+  .rec-dot{
+    position:absolute;
+    top:10px; left:10px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(0,0,0,0.55);
+    padding:4px 9px 4px 7px;
+    border-radius:20px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--paper);
+    letter-spacing:.06em;
+  }
+  .rec-dot .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--redstamp-bright);
+    animation:pulse 1s infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+
+  .camera-controls{
+    flex:1;
+    min-width:220px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .camera-btn-row{display:flex; gap:8px; flex-wrap:wrap;}
+  .camera-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--olive);
+    line-height:1.6;
+  }
+  .playback-block{margin-top:6px;}
+  .playback-block video{
+    width:100%; max-width:280px;
+    border-radius:3px;
+    border:1px solid var(--line);
+    background:#000;
+  }
+  .download-link{
+    display:inline-block;
+    margin-top:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--brass-bright);
+    text-decoration:underline;
+  }
+
+  /* ---------- GUIDELINE PAGE ---------- */
+  .guide-intro{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--paper-dim);
+    line-height:1.7;
+    margin-bottom:20px;
+  }
+  .fw-card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    padding:20px 22px;
+    margin-bottom:16px;
+    scroll-margin-top:20px;
+    box-shadow:0 10px 26px -14px rgba(0,0,0,0.5);
+  }
+  .fw-card-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .fw-card h3{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    font-size:19px;
+    margin:0;
+    color:var(--ink);
+  }
+  .fw-card .steps{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--redstamp);
+    margin-bottom:12px;
+  }
+  .fw-card .when{
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:14px;
+    color:var(--ink);
+  }
+  .fw-card .template-label, .fw-card .example-label{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:11px;
+    color:var(--olive-dim);
+    margin-bottom:6px;
+    margin-top:14px;
+  }
+  .fw-card .template{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    line-height:1.75;
+    background:rgba(34,29,18,0.05);
+    border-left:3px solid var(--brass);
+    padding:10px 14px;
+    white-space:pre-wrap;
+  }
+  .fw-card .example{
+    font-family:'Libre Baskerville', Georgia, serif;
+    font-style:italic;
+    font-size:13.5px;
+    line-height:1.7;
+    border-left:3px solid var(--olive);
+    padding:10px 14px;
+    background:rgba(107,115,85,0.06);
+  }
+
+  footer{
+    margin-top:30px;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--olive-dim);
+  }
+
+  /* ---------- MANAGE QUESTIONS ---------- */
+  .mgmt-label{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+    margin-bottom:5px;
+  }
+  #mgmtCat, #mgmtFw, #mgmtQ, #mgmtTips, #mgmtSearch{
+    width:100%;
+    background:var(--navy);
+    border:1px solid var(--line);
+    color:var(--paper);
+    font-family:'Libre Baskerville', Georgia, serif;
+    font-size:13.5px;
+    padding:8px 10px;
+    border-radius:3px;
+    resize:vertical;
+  }
+  #mgmtFw, #mgmtSearch{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; }
+  .mgmt-row{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    padding:14px 16px;
+    margin-bottom:10px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+  .mgmt-row-main{flex:1; min-width:220px;}
+  .mgmt-row-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--redstamp);
+    background:rgba(154,68,51,0.08);
+    padding:2px 7px;
+    border-radius:3px;
+    margin-bottom:6px;
+  }
+  .mgmt-row-q{
+    font-family:'Libre Baskerville', Georgia, serif;
+    font-style:italic;
+    font-size:14.5px;
+    line-height:1.5;
+    margin:0 0 4px;
+  }
+  .mgmt-row-fw{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--olive-dim);
+  }
+  .mgmt-row-btns{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+  }
+  .mgmt-row-btns .btn{padding:6px 12px; font-size:10.5px;}
+  .mgmt-custom-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--olive);
+    margin-left:6px;
+  }
+
+  @media (max-width:520px){
+    .card-body{padding:20px 18px 18px;}
+    header{align-items:flex-start;}
+    .serial{text-align:left;}
+    .timer-display{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="title-block">
+      <div class="eyebrow">Selection Board Preparation</div>
+      <h1>Personnel File: Interview Readiness</h1>
+      <div class="subtitle">Brunei Officer Cadet School — Random Question Drill</div>
+    </div>
+    <div class="serial">FORM OCS-INT/07<br><span id="fileCountLabel">— QUESTIONS ON FILE</span></div>
+  </header>
+
+  <div class="main-nav">
+    <button class="active" data-page="practice">Practice Deck</button>
+    <button data-page="guide">Framework Guide</button>
+    <button data-page="manage">Manage Questions</button>
+  </div>
+
+  <!-- ============ PRACTICE PAGE ============ -->
+  <div class="page active" id="page-practice">
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Countdown to Interview</span>
+        <span class="fw-hint" style="color:var(--paper-dim)" id="savedIndicator">settings saved on this device</span>
+      </div>
+      <div class="timer-row">
+        <div>
+          <div class="timer-display" id="countdownDisplay">— DAYS</div>
+          <div class="timer-target" id="countdownSub">Set your interview date below</div>
+        </div>
+      </div>
+      <div class="customize-row" style="margin-top:14px; flex-wrap:wrap;">
+        <label for="interviewTypeInput">Interview:</label>
+        <select id="interviewTypeInput" style="background:var(--navy); color:var(--paper); border:1px solid var(--line); border-radius:3px; padding:5px 8px; font-family:'IBM Plex Mono', monospace; font-size:12px;">
+          <option value="AFCB">AFCB Selection</option>
+          <option value="FIB">FIB Interview</option>
+        </select>
+        <label for="interviewDateInput" style="margin-left:8px;">Date:</label>
+        <input type="date" id="interviewDateInput" style="background:var(--navy); color:var(--paper); border:1px solid var(--line); border-radius:3px; padding:5px 8px; font-family:'IBM Plex Mono', monospace; font-size:12px;">
+        <button class="btn primary" id="countdownSaveBtn">Save</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Overall Session Timer</div>
+      <div class="timer-row">
+        <div>
+          <div class="timer-display" id="sessionDisplay">00:00:00</div>
+          <div class="timer-target" id="sessionTarget">Target: 30 min</div>
+        </div>
+        <button class="btn primary" id="sessionStartBtn">Start</button>
+        <button class="btn" id="sessionResetBtn">Reset</button>
+        <div class="customize-row">
+          <label for="sessionTargetInput">Customize target (min):</label>
+          <input type="number" id="sessionTargetInput" min="1" max="240" value="30">
+          <button class="btn" id="sessionApplyBtn">Set</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabs" id="tabs"></nav>
+
+    <div class="panel">
+      <div class="deck-row">
+        <div class="deck-status" id="deckStatus">Deck ready. <b>60</b> files remaining in this drawer.</div>
+        <div style="display:flex; gap:16px; align-items:center;">
+          <button class="reset-link" id="resetBtn">reshuffle drawer</button>
+          <button class="draw-btn" id="drawBtn">Draw Question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-stage" id="cardStage">
+      <div class="empty-state">No file drawn yet. Select a category above (or leave on ALL FILES) and press <strong>Draw Question</strong>. A stopwatch will start automatically to time your answer.</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Camera &amp; Self-Review Recording</span>
+        <span class="fw-hint" style="color:var(--paper-dim)">Optional — practice as if in front of the board</span>
+      </div>
+      <div class="camera-body">
+        <div class="camera-video-wrap" id="cameraWrap">
+          <div class="camera-placeholder">Camera off.<br>Press "Enable Camera" to begin.</div>
+        </div>
+        <div class="camera-controls">
+          <div class="camera-btn-row">
+            <button class="btn primary" id="camEnableBtn">Enable Camera</button>
+            <button class="btn" id="camDisableBtn" disabled>Turn Off</button>
+          </div>
+          <div class="camera-btn-row">
+            <button class="btn" id="camRecordBtn" disabled>Start Recording</button>
+            <button class="btn danger" id="camStopBtn" disabled>Stop Recording</button>
+          </div>
+          <div class="camera-note" id="camNote">Video and audio stay on this device — nothing is uploaded. Recording uses your browser's built-in recorder; if "Enable Camera" doesn't prompt you, check your browser's site permissions for camera/microphone access.</div>
+          <div class="playback-block" id="playbackBlock" style="display:none;">
+            <div class="tips-label" style="color:var(--brass-bright);">Last Recording</div>
+            <video id="playbackVideo" controls></video><br>
+            <a id="downloadLink" class="download-link" download="ocs-answer-recording.webm">Download recording</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>Confidential — for personal interview rehearsal use only</footer>
+  </div>
+
+  <!-- ============ GUIDELINE PAGE ============ -->
+  <div class="page" id="page-guide">
+    <div class="guide-intro">
+      Each question in the deck is tagged with a recommended framework. The specific label may vary slightly by question (e.g. "STAR, ownership-focused"), but it always maps back to one of the core structures below. Use these as skeletons, not scripts — fill them with your own real details.
+    </div>
+
+    <div class="fw-card">
+      <div class="fw-card-head"><h3>Reference: The Biographical Deep-Dive</h3></div>
+      <div class="steps">Not in the random deck — this is a chronological walk-through, not single-shot Q&amp;A</div>
+      <div class="when">Some panels (especially FIB-style interviews) move stage-by-stage through your entire life history rather than asking isolated questions. Expect them to fill in your actual details at each stage below, in order. Rehearse a 20–30 second summary for each row, ready to expand if probed.</div>
+      <div class="template">SCHOOLING — schools attended, types, reasons for any move, dates, distance/travel, effect on activities.
+EXAMS — types taken, subjects, results, effort, how holidays affected revision, further academic plans.
+INSIDE SCHOOL — prefect/monitor roles, sports and level played, clubs/societies, uniformed organisations, adventurous activities, trips.
+OUTSIDE INTERESTS (school years) — sports centre use, youth organisations (join/leave dates, rank, responsibilities, camps), hobbies, part-time jobs, holidays, career ambitions at the time.
+HIGHER EDUCATION — institution and why, course and dates, academic performance, living/finances, involvement in student life, sports/clubs, trips.
+EMPLOYMENT — jobs held, dates, responsibilities, reasons for leaving, current pay, further training, travel, social/community involvement.
+MANDATORY DISCLOSURE — any adverse police contact, offences, court judgements — answer honestly and factually.
+REFLECTION — the high point and low point of your life so far.</div>
+    </div>
+
+    <div class="fw-card">
+      <div class="fw-card-head"><h3>Reference: Essay Defence / Pressure Questions</h3></div>
+      <div class="steps">Not in the random deck — these depend on your own submitted essay</div>
+      <div class="when">Some panels probe your written application essay directly, in a more adversarial, rapid-fire tone. This tests composure under pointed questioning as much as knowledge. The pattern below is what to prepare for, regardless of the exact wording used on you.</div>
+      <div class="template">1. Own any factual mistake in your essay calmly — explain why it happened, don't get flustered defending it.
+2. For any skill or experience you claimed (IT, logistics, combat sports, etc.) — be ready to honestly state its real scope and how you'd bridge the gap to a military context.
+3. For any document you cited (e.g. Defence White Paper) — know specific sections or points, not just the title.
+4. For any big claim ("I'll modernise X", "optimise Y") — have one concrete, proportionate first step ready, not a grand promise.
+5. If challenged on a personal result (fitness test, English test, etc.) — answer honestly and briefly, then pivot to what you're doing about it.
+6. Stay calm and non-defensive throughout — the panel is often testing your composure under pressure as much as your answer's content.</div>
+      <div class="example">"You're right that my essay could have been more specific there — what I meant was X, and here's the concrete first step I'd actually take rather than the broader claim I made in writing."</div>
+    </div>
+
+    <div id="guideList"></div>
+    <footer>Confidential — for personal interview rehearsal use only</footer>
+  </div>
+
+  <!-- ============ MANAGE QUESTIONS PAGE ============ -->
+  <div class="page" id="page-manage">
+    <div class="guide-intro">
+      Add, edit, or remove questions from your deck. Changes are saved on this device and will still be here next time you open this file in the same browser. Edits and deletions apply on top of the built-in question bank — use <strong>Restore Defaults</strong> to undo all customisations.
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span id="mgmtFormTitle">Add a New Question</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:200px;">
+            <label class="mgmt-label">Category</label>
+            <input type="text" id="mgmtCat" list="mgmtCatList" placeholder="e.g. Personal Background">
+            <datalist id="mgmtCatList"></datalist>
+          </div>
+          <div style="flex:1; min-width:200px;">
+            <label class="mgmt-label">Recommended Framework</label>
+            <input type="text" id="mgmtFw" placeholder="e.g. STAR (Situation–Task–Action–Result)">
+          </div>
+        </div>
+        <div>
+          <label class="mgmt-label">Question</label>
+          <textarea id="mgmtQ" rows="2" placeholder="Type the interview question here..."></textarea>
+        </div>
+        <div>
+          <label class="mgmt-label">Structuring Tips (one per line)</label>
+          <textarea id="mgmtTips" rows="3" placeholder="One tip per line..."></textarea>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="btn primary" id="mgmtSaveBtn">Add Question</button>
+          <button class="btn" id="mgmtCancelBtn" style="display:none;">Cancel Edit</button>
+          <span class="fw-hint" id="mgmtFormMsg" style="color:var(--paper-dim)"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Question Bank</span>
+        <span class="fw-hint" id="mgmtCount" style="color:var(--paper-dim)"></span>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;">
+        <input type="text" id="mgmtSearch" placeholder="Search questions..." style="flex:2; min-width:180px;">
+        <select id="mgmtCatFilter" style="flex:1; min-width:160px; background:var(--navy); color:var(--paper); border:1px solid var(--line); border-radius:3px; padding:8px; font-family:'IBM Plex Mono', monospace; font-size:12px;">
+          <option value="">All Categories</option>
+        </select>
+        <button class="btn danger" id="mgmtResetBtn">Restore Defaults</button>
+      </div>
+      <div id="mgmtList"></div>
+    </div>
+
+    <footer>Confidential — for personal interview rehearsal use only</footer>
+  </div>
+
+</div>
+
+<script>
+/* ======================= QUESTION DATA ======================= */
+const BASE_DATA = [
+{cat:"Personal Background", q:"Can you tell me about your family and how they've influenced your life?",
+ fw:"Then → Now → Link", tips:[
+ "Pick one or two family members and one concrete influence each — don't try to summarise everyone.",
+ "End by linking that influence directly to a value the board cares about (discipline, service, resilience).",
+ "Keep it under 90 seconds; this is context-setting, not the main event."]},
+
+{cat:"Personal Background", q:"What personal experiences have shaped your character the most?",
+ fw:"STAR (Situation–Task–Action–Result)", tips:[
+ "Choose one defining experience, not a list — depth beats breadth here.",
+ "Spend most of your time on the Action and Result, not background detail.",
+ "Close with the specific trait it built and one line on how that trait shows up today."]},
+
+{cat:"Personal Background", q:"How do you typically handle setbacks or failures?",
+ fw:"STAR + Lesson Learned", tips:[
+ "Own the failure honestly — boards notice deflection or blame immediately.",
+ "Show the recovery process, not just the outcome: what did you actually do differently?",
+ "Name the lesson explicitly in one sentence at the end."]},
+
+{cat:"Personal Background", q:"What achievements are you most proud of so far?",
+ fw:"STAR", tips:[
+ "Pick an achievement with a real obstacle in it, not just a title or result.",
+ "Credit any team or mentor involved — pure self-credit reads poorly to a board.",
+ "Connect the achievement to a quality OCS will demand (perseverance, planning, teamwork)."]},
+
+{cat:"Personal Background", q:"Can you describe a challenge you've overcome in your life?",
+ fw:"STAR", tips:[
+ "Choose a genuine challenge — physical, academic, or personal — with real stakes.",
+ "Be specific about the actions you took, not just how you felt.",
+ "Avoid over-dramatising; understated delivery reads as more mature."]},
+
+{cat:"Personal Background", q:"What kind of environment did you grow up in, and how has it impacted you?",
+ fw:"Context → Impact → Application", tips:[
+ "Describe the environment in a sentence or two — this isn't the focus, the impact is.",
+ "Be honest even if your background wasn't easy; boards value self-awareness over a polished story.",
+ "Land on how it shapes how you'll operate as an officer."]},
+
+{cat:"Personal Background", q:"Have you held any responsibilities at home, school, or work that prepared you for military life?",
+ fw:"STAR, mapped to military competency", tips:[
+ "Pick a responsibility with real accountability — caregiving, a job, a leadership role, managing a budget.",
+ "Explicitly map the skill (reliability, resource management, leading peers) to what OCS will require.",
+ "Concrete, small, real examples beat vague claims of 'being responsible.'"]},
+
+{cat:"Personal Background", q:"What would your closest friends say are your strengths and weaknesses?",
+ fw:"Third-Person Mirror + Evidence", tips:[
+ "Answer as if quoting them, with one short example backing each strength and weakness.",
+ "Choose a genuine, non-trivial weakness — avoid the cliché 'I work too hard.'",
+ "For the weakness, add what you're doing about it; that shows growth, not just insight."]},
+
+{cat:"Personal Background", q:"How do you spend your time outside of school or work?",
+ fw:"Values-in-Action", tips:[
+ "Keep it brief and honest; the board is checking for balance, discipline, and character, not a resume.",
+ "If relevant, mention anything showing physical fitness, teamwork, or service outside obligations.",
+ "It's fine to mention rest and hobbies — a one-dimensional answer can look rehearsed."]},
+
+{cat:"Personal Background", q:"What values are most important to you, and where do those values come from?",
+ fw:"Value → Origin → Example", tips:[
+ "Choose two or three values maximum, not a long list.",
+ "Trace each to a real source — a person, event, or upbringing detail — not an abstract statement.",
+ "Back at least one value with a short example of it in action."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"What motivated you to join the military?",
+ fw:"PREP (Point–Reason–Example–Point)", tips:[
+ "State your core motivation in one clear sentence first — don't bury it.",
+ "Support it with one concrete reason and one real example, not abstractions like 'I want to serve.'",
+ "Avoid motivations that sound purely financial or externally imposed (parents, prestige) as the sole driver."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"Why do you want to become an officer instead of joining as an enlisted member?",
+ fw:"Compare–Contrast + Vision", tips:[
+ "Show you understand the real difference in role: leadership, planning, and responsibility for others' welfare.",
+ "Avoid implying enlisted service is 'lesser' — frame it as fit for your goals, not rank for its own sake.",
+ "Tie it to a specific strength you have (leading people, decision-making under pressure)."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"Was there a specific moment or event that sparked your decision to serve?",
+ fw:"STAR-style narrative", tips:[
+ "Tell it as a short, vivid story — the board remembers specifics, not generalities.",
+ "If there wasn't a single dramatic moment, it's fine to say it was a gradual realisation — just show the reasoning.",
+ "End by linking the moment to why the military specifically, not just 'wanting to help.'"]},
+
+{cat:"Motivation & RBAF Knowledge", q:"How long have you been considering a military career?",
+ fw:"Timeline + Evidence", tips:[
+ "Give a real timeframe and back it with actions you took during that period (research, fitness, talking to serving officers).",
+ "This question checks for impulsiveness — show sustained, deliberate interest, not a recent whim.",
+ "If your interest is recent, explain what changed and why the decision is still well-considered."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"How do you think military service will shape your personal development?",
+ fw:"Future-Oriented PREP", tips:[
+ "Name two or three specific areas of growth (discipline, leadership, resilience) rather than a vague 'it'll make me better.'",
+ "Show you've thought about the trade-offs too (structure, time away from family) and accept them.",
+ "Keep the focus on becoming someone useful to others, not just self-improvement."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"What do you hope to contribute to the military?",
+ fw:"Skills-Mapping Framework", tips:[
+ "Map one or two genuine strengths (a skill, background, or trait) directly to a military need.",
+ "Stay realistic — avoid overclaiming abilities you can't back up if probed.",
+ "It's fine to say you want to contribute through steady, reliable service rather than a single 'special' skill."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"How have your friends and family reacted to your decision to join?",
+ fw:"Honest–Balanced Framework", tips:[
+ "Acknowledge any concern or hesitation honestly — a board is suspicious of 'everyone was thrilled.'",
+ "Explain how you addressed their concerns and what won them over, or that they respect your choice even if worried.",
+ "Close by reaffirming your own resolve regardless of others' initial reaction."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"What qualities do you think make a good officer, and how do you embody them?",
+ fw:"Define → Evidence", tips:[
+ "Pick two or three qualities (integrity, decisiveness, care for subordinates) and define each briefly.",
+ "For every quality claimed, give one short real-life example — claims without evidence sound rehearsed.",
+ "Avoid a generic list pulled from a textbook; make it personal."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"Are there any military figures (past or present) you admire? Why?",
+ fw:"Figure → Trait → Application", tips:[
+ "Choose someone you can speak about with real detail, not just a famous name.",
+ "Name the specific trait or decision you admire, not just 'they were a great leader.'",
+ "Connect it to how you'd apply that trait yourself as a cadet or officer."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"How do you think military service will differ from your expectations?",
+ fw:"Realistic-Awareness Framework", tips:[
+ "Show you've done real research — mention a specific expectation you've had to adjust.",
+ "Acknowledge the harder, less glamorous parts (routine, fatigue, bureaucracy) rather than only the exciting ones.",
+ "End on why you're still committed despite the more realistic picture."]},
+
+{cat:"Officer Cadet School Training", q:"What do you know about the structure and phases of Officer Cadet School?",
+ fw:"Structured Fact Recall", tips:[
+ "Outline the phases in order, briefly — this is a knowledge check, keep it factual and organised.",
+ "If unsure of exact details, be honest and show what you do know plus how you'll adapt.",
+ "Mention where you got your information (briefings, seniors, official sources) to show diligence."]},
+
+{cat:"Officer Cadet School Training", q:"Which aspect of OCS training do you think will be most challenging for you?",
+ fw:"Honest Self-Assessment + Mitigation Plan", tips:[
+ "Name a real, specific challenge (not a humble-brag) — self-awareness is being assessed here.",
+ "Immediately follow with a concrete plan for how you're addressing it now, before training starts.",
+ "Avoid claiming nothing will be hard — that reads as lacking self-insight."]},
+
+{cat:"Officer Cadet School Training", q:"What are you most looking forward to during your training?",
+ fw:"Positive Framing → Growth Link", tips:[
+ "Pick something specific (a skill, a type of exercise, camaraderie) rather than a generic 'everything.'",
+ "Explain briefly why it matters to your development as a future officer.",
+ "Genuine enthusiasm reads better than a rehearsed-sounding answer — keep it natural."]},
+
+{cat:"Officer Cadet School Training", q:"How are you preparing physically for OCS?",
+ fw:"Specific Plan Framework", tips:[
+ "Give concrete details: what you train, how often, and current benchmarks (run time, push-ups, etc.).",
+ "Show a structured plan with progression, not just 'I go to the gym.'",
+ "If you have gaps, name them honestly and what you're doing to close them before training starts."]},
+
+{cat:"Officer Cadet School Training", q:"How are you preparing mentally and emotionally for the training?",
+ fw:"Specific Plan Framework", tips:[
+ "Name actual techniques: visualisation, talking to former cadets, building routine and discipline habits now.",
+ "Show you understand training will be uncomfortable, not just physically but psychologically.",
+ "Avoid vague answers like 'I'll just stay positive' — give something concrete."]},
+
+{cat:"Officer Cadet School Training", q:"How do you plan to stay motivated during tough times in training?",
+ fw:"Strategy + Example", tips:[
+ "Give one or two specific anchors: your 'why', a support system, or a mental technique.",
+ "If possible, reference a past hard experience where you used a similar strategy successfully.",
+ "Keep it credible and personal rather than a generic motivational slogan."]},
+
+{cat:"Officer Cadet School Training", q:"What does discipline mean to you in the context of military training?",
+ fw:"Define → Example → Application", tips:[
+ "Give a working definition in your own words before an example — don't just quote a dictionary.",
+ "Use a real example where you exercised discipline even when no one was watching.",
+ "Link it to why discipline matters operationally, not just as a personal virtue."]},
+
+{cat:"Officer Cadet School Training", q:"Have you spoken to any current or former cadets? What did they share?",
+ fw:"Evidence-of-Research Framework", tips:[
+ "If you have spoken with someone, share one or two specific, useful things they told you.",
+ "If you haven't, be honest and mention other research you've done (talks, articles, official info sessions).",
+ "Show that what you learned actually changed or confirmed your preparation."]},
+
+{cat:"Officer Cadet School Training", q:"How do you think you'll adapt to the regimentation of military life?",
+ fw:"Self-Awareness + Coping Strategy", tips:[
+ "Acknowledge it will be an adjustment rather than claiming it will be effortless.",
+ "Reference any existing experience with structure or routine (sport, school, work) as evidence you can adapt.",
+ "Name a specific strategy for the early adjustment period."]},
+
+{cat:"Officer Cadet School Training", q:"What strategies will you use to manage stress and pressure during training?",
+ fw:"Strategy + Example", tips:[
+ "Name concrete, practical techniques (breathing, breaking tasks down, relying on your section) not vague ones.",
+ "Reference a past high-pressure situation where a similar strategy worked for you.",
+ "Show you understand pressure in OCS is deliberate and part of the training design."]},
+
+{cat:"General Knowledge / Security & History", q:"What do you know about your country's armed forces and their role in national defense?",
+ fw:"PEEL (Point–Evidence–Explain–Link)", tips:[
+ "State the core role clearly first (deterrence, sovereignty protection, internal security support), then support it with specifics.",
+ "Mention the branches and, if known, key recent developments or modernisation efforts.",
+ "Close by linking this to why officers matter in fulfilling that role."]},
+
+{cat:"General Knowledge / Security & History", q:"Can you explain the role of an officer compared to an enlisted soldier?",
+ fw:"Compare–Contrast", tips:[
+ "Focus the contrast on responsibility and scope: officers plan, decide, and are accountable for personnel and outcomes.",
+ "Avoid implying a hierarchy of worth — frame it as complementary roles within one team.",
+ "Use a concrete example (a mission or task) to illustrate the difference in practice."]},
+
+{cat:"General Knowledge / Security & History", q:"Are you familiar with any recent military operations or missions your country has been involved in?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Name a specific operation, exercise, or deployment (peacekeeping, joint exercises, disaster relief) with basic detail.",
+ "If unsure, say so honestly rather than guessing, and mention where you'd go to find out.",
+ "Briefly note why the operation mattered, not just that it happened."]},
+
+{cat:"General Knowledge / Security & History", q:"How would you describe the current geopolitical landscape in your region?",
+ fw:"PEEL, balanced and non-partisan", tips:[
+ "Stick to widely known, factual points — this is not the place for personal political opinions.",
+ "Mention two or three relevant regional dynamics (trade, territorial issues, alliances) at a general level.",
+ "Keep language measured and avoid taking sides on contested issues."]},
+
+{cat:"General Knowledge / Security & History", q:"What are some major threats or challenges facing your country's security today?",
+ fw:"PEEL", tips:[
+ "Cover a mix of traditional and non-traditional threats (territorial, cyber, disaster, transnational crime).",
+ "Prioritise two or three you can speak about with some depth rather than listing everything.",
+ "Where relevant, note the military's specific role in addressing each."]},
+
+{cat:"General Knowledge / Security & History", q:"How does the military contribute to peacekeeping and humanitarian missions?",
+ fw:"PEEL with examples", tips:[
+ "Give one concrete example of a peacekeeping or humanitarian role (UN mission, disaster relief operation).",
+ "Explain briefly what capability the military brings that civilian agencies often can't (logistics, manpower, speed).",
+ "Keep the tone factual rather than purely idealistic."]},
+
+{cat:"General Knowledge / Security & History", q:"What is your understanding of civil-military relations?",
+ fw:"Define → Principle → Example", tips:[
+ "Define it simply: the relationship between armed forces and civilian government/society, including civilian oversight.",
+ "Mention the principle that the military operates under and is accountable to civilian authority.",
+ "If possible, use a brief, neutral example to illustrate the principle in practice."]},
+
+{cat:"General Knowledge / Security & History", q:"What are some ethical issues that officers might face in modern warfare?",
+ fw:"Balanced-Perspective Framework", tips:[
+ "Name real dilemmas: proportionality of force, protecting civilians, following orders that feel questionable.",
+ "Present the tension honestly rather than offering an oversimplified answer.",
+ "Reference the role of rules of engagement and law of armed conflict as guiding structures."]},
+
+{cat:"General Knowledge / Security & History", q:"How should an officer balance loyalty to the chain of command with moral judgment?",
+ fw:"Balanced-Perspective + Principle", tips:[
+ "Acknowledge both duties are real: obedience to lawful orders and personal moral responsibility.",
+ "Use the standard distinction — officers follow lawful orders, but are not obligated to follow unlawful ones.",
+ "If possible, mention that raising concerns through proper channels is different from simple defiance."]},
+
+{cat:"General Knowledge / Security & History", q:"How do you think public perception affects the military and its operations?",
+ fw:"PEEL", tips:[
+ "Explain that public trust affects recruitment, funding, and legitimacy of operations.",
+ "Give a brief example of how visible conduct (positive or negative) shapes that perception.",
+ "Note the officer's personal role in maintaining public trust through professional conduct."]},
+
+{cat:"Leadership and Teamwork", q:"Can you describe a time when you had to lead a team under pressure?",
+ fw:"STAR", tips:[
+ "Set the pressure and stakes clearly in the Situation so the board understands the difficulty.",
+ "Focus most of your answer on the specific actions you took as leader, not just what the team did.",
+ "State the result and, briefly, what you'd do differently next time."]},
+
+{cat:"Leadership and Teamwork", q:"How do you approach working with people who have different personalities or viewpoints?",
+ fw:"STAR / Approach Framework", tips:[
+ "Describe your general approach in one or two sentences, then ground it in a specific example.",
+ "Show flexibility — adapting your style to the person — rather than a one-size-fits-all method.",
+ "Mention how you handle genuine disagreement, not just easy differences."]},
+
+{cat:"Leadership and Teamwork", q:"What's more important in a team: results or relationships? Why?",
+ fw:"Balanced-Argument Framework", tips:[
+ "Avoid picking a hard extreme — argue that both matter and are usually connected.",
+ "Use a brief example showing how strong relationships enabled a good result, or vice versa.",
+ "If forced to prioritise, explain the reasoning rather than just asserting one over the other."]},
+
+{cat:"Leadership and Teamwork", q:"How do you handle taking responsibility when things go wrong?",
+ fw:"STAR, ownership-focused", tips:[
+ "Lead with clear ownership — no blame-shifting, even if others were partly responsible.",
+ "Describe the concrete corrective action you took, not just the apology.",
+ "Close with what changed afterward as a result of that responsibility being taken."]},
+
+{cat:"Leadership and Teamwork", q:"Describe a time you had to make a tough decision as a leader.",
+ fw:"STAR", tips:[
+ "Explain the competing considerations that made the decision genuinely tough.",
+ "Walk through your reasoning process, not just the final choice.",
+ "Be honest about the outcome, including any downside, and what you learned."]},
+
+{cat:"Leadership and Teamwork", q:"How do you give constructive feedback to a teammate?",
+ fw:"SBI (Situation–Behavior–Impact)", tips:[
+ "Describe your method: specific situation, observed behaviour, and its impact — not vague criticism.",
+ "Mention keeping feedback private, timely, and focused on behaviour rather than character.",
+ "Use a short real example to show the method actually worked."]},
+
+{cat:"Leadership and Teamwork", q:"Have you ever had to step back and let someone else lead? How did that feel?",
+ fw:"STAR, humility-focused", tips:[
+ "Be honest about any discomfort — genuine reflection is more convincing than false ease.",
+ "Explain why stepping back was the right call for the team in that moment.",
+ "Show what you learned about leadership by observing someone else lead."]},
+
+{cat:"Leadership and Teamwork", q:"What does accountability mean to you as a future officer?",
+ fw:"Define → Example", tips:[
+ "Give a clear, personal definition rather than a textbook one.",
+ "Extend it beyond your own actions to being accountable for your subordinates' welfare and conduct.",
+ "Back it with a short example from your own experience."]},
+
+{cat:"Leadership and Teamwork", q:"How do you motivate others during difficult situations?",
+ fw:"STAR", tips:[
+ "Name specific techniques you use (leading by example, clear communication, recognising effort).",
+ "Ground it in a real example where you motivated someone through a hard moment.",
+ "Avoid generic answers like 'I just encourage people' — show the actual behaviour."]},
+
+{cat:"Leadership and Teamwork", q:"What's your leadership style, and how has it evolved?",
+ fw:"Then → Now Framework", tips:[
+ "Briefly describe how you led early on, then how it has changed with experience.",
+ "Name the style honestly (e.g. hands-on, collaborative) rather than reaching for a buzzword.",
+ "Give one example showing the more developed version of your style in action."]},
+
+/* ===== ADDITIONAL: Personal Background ===== */
+{cat:"Personal Background", q:"Tell me something not in your resume.",
+ fw:"Direct Reveal + Link", tips:[
+ "Pick something genuinely absent from your paperwork — a trait, story, or quality — not a fact they could already see.",
+ "Use it to add a new dimension to how the panel sees you, then tie it back to fit for the role."]},
+
+{cat:"Personal Background", q:"What is your name, when were you born, and how old does that make you in completed years and months?",
+ fw:"Direct Factual Recall", tips:[
+ "Answer plainly and confidently — this is a warm-up, not a test.",
+ "Know your exact age in completed months; hesitating here looks like poor preparation."]},
+
+{cat:"Personal Background", q:"Where were you brought up?",
+ fw:"Context → Impact → Application", tips:[
+ "Keep it brief — a sentence or two on place and setting is enough unless asked to expand.",
+ "If relevant, note anything about that upbringing that shaped your interest in service."]},
+
+{cat:"Personal Background", q:"Tell me about your education background — what are your qualifications, and how do you feel about your results?",
+ fw:"Structured Fact Recall", tips:[
+ "State qualifications, subjects, and grades clearly and honestly.",
+ "Reflect briefly on effort vs outcome rather than only reciting numbers."]},
+
+{cat:"Personal Background", q:"What personal achievements have you experienced during your life so far?",
+ fw:"STAR", tips:[
+ "Choose one achievement with real difficulty in it, not just a title.",
+ "Credit anyone who helped, and link it to a quality relevant to service."]},
+
+{cat:"Personal Background", q:"Tell us about your struggles — in work or life — in detail, and what you learned.",
+ fw:"STAR + Lesson Learned", tips:[
+ "Pick a real struggle with genuine stakes, not a trivial one.",
+ "Spend most time on what you actually did and what changed afterward."]},
+
+{cat:"Personal Background", q:"What are your strengths and weaknesses?",
+ fw:"Third-Person Mirror + Evidence", tips:[
+ "Back each strength and weakness with one short, real example.",
+ "For the weakness, show what you're actively doing to address it."]},
+
+{cat:"Personal Background", q:"What makes you unique, or why should we select you over other candidates — including those with a Master's or PhD?",
+ fw:"PREP", tips:[
+ "Lead with your actual differentiator, not a generic claim of 'hard work.'",
+ "Acknowledge other candidates' qualifications without diminishing them — argue fit, not superiority."]},
+
+{cat:"Personal Background", q:"Compare two jobs or experiences you've had — what matters in each?",
+ fw:"Compare–Contrast", tips:[
+ "Pick two genuinely different roles and name one distinct value each teaches.",
+ "Land on what both taught you that's relevant to being an officer."]},
+
+{cat:"Personal Background", q:"Do you think first, or act first?",
+ fw:"Balanced-Perspective", tips:[
+ "Avoid a hard extreme — explain when you lean toward each, with a brief example.",
+ "If forced to choose, explain the reasoning rather than just asserting one."]},
+
+{cat:"Personal Background", q:"How do you cope with work pressure?",
+ fw:"Strategy + Example", tips:[
+ "Name a concrete coping method, not just 'I stay calm.'",
+ "Back it with a real high-pressure moment where it worked."]},
+
+{cat:"Personal Background", q:"Rate your flexibility, adaptability, and ability to work under pressure.",
+ fw:"Self-Assessment + Evidence", tips:[
+ "Give an honest rating, then justify it with one short example per trait.",
+ "Avoid claiming a perfect score on all three — some self-critique reads as more credible."]},
+
+{cat:"Personal Background", q:"What do you do in your spare time, and how do you keep fit?",
+ fw:"Values-in-Action", tips:[
+ "Be specific about your fitness routine if asked — this reflects OCS readiness.",
+ "Keep the rest brief; balance and normalcy read well here."]},
+
+{cat:"Personal Background", q:"What's your favourite song, and what do you post on social media?",
+ fw:"Direct, Low-Stakes Answer", tips:[
+ "Answer honestly and briefly — this is a rapport/character check, not a trap.",
+ "If your online presence includes anything questionable, be upfront rather than evasive."]},
+
+{cat:"Personal Background", q:"Are you in a relationship, and what do you look for in a partner?",
+ fw:"Direct, Measured Answer", tips:[
+ "Keep the answer brief and comfortable — deflecting awkwardly draws more attention than a simple honest answer.",
+ "Avoid over-sharing; a sentence or two is enough."]},
+
+{cat:"Personal Background", q:"Do you read books — what kind, and what have you learned?",
+ fw:"Direct Example", tips:[
+ "Name an actual book or genre, not a vague 'I like reading.'",
+ "Share one specific takeaway to show genuine engagement."]},
+
+{cat:"Personal Background", q:"What is the biggest lesson you learned in high school or university?",
+ fw:"STAR + Lesson Learned", tips:[
+ "Anchor it in one specific moment, not a general reflection.",
+ "Make the lesson something that still applies to how you operate today."]},
+
+{cat:"Personal Background", q:"What is your stance on drug use?",
+ fw:"Define → Principle → Application", tips:[
+ "State your position clearly and simply — this is a values check.",
+ "Link it to the standard of conduct expected of a serving officer."]},
+
+{cat:"Personal Background", q:"Have you been to another country? How did studying or working overseas differ from Brunei?",
+ fw:"Compare–Contrast", tips:[
+ "If you have overseas experience, give one concrete cultural or practical difference.",
+ "If not, it's fine to say so — pivot to what you've learned about other cultures another way."]},
+
+{cat:"Personal Background", q:"Have you joined PKBN? Why?",
+ fw:"Direct Factual Recall", tips:[
+ "Answer honestly whether you have or haven't, and explain your reasoning either way.",
+ "If you haven't, mention any equivalent community or uniformed involvement you do have."]},
+
+{cat:"Personal Background", q:"If you were not successful with this application, what would you do?",
+ fw:"Realistic-Awareness Framework", tips:[
+ "Show resolve without sounding falsely certain — acknowledge disappointment, then explain your next step.",
+ "Avoid saying you'd simply reapply with no reflection — mention what you'd actually improve."]},
+
+{cat:"Personal Background", q:"Do you have any questions for the panel?",
+ fw:"Direct, Prepared Response", tips:[
+ "Always have at least one genuine question ready — 'no questions' can read as lack of engagement.",
+ "Ask something that shows real interest (training, posting, unit culture) rather than something answered in the brochure."]},
+
+/* ===== ADDITIONAL: Motivation & RBAF Knowledge ===== */
+{cat:"Motivation & RBAF Knowledge", q:"What do you know about RBAF, what do you understand by RBAF's core values, and why do you want to join RBAF?",
+ fw:"PEEL (Point–Evidence–Explain–Link)", tips:[
+ "Cover RBAF's role and branches first, then define the core values with an example, then give your personal 'why.'",
+ "Keep each of the three parts distinct so the answer doesn't blur into one long ramble."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"Why join the military instead of other jobs your qualifications open up — is it interest or job security?",
+ fw:"PREP", tips:[
+ "Be honest about the mix of motivations rather than only picking the noble-sounding one.",
+ "Show the balance tips toward genuine interest, backed by a concrete example."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"Why don't you go abroad for work instead?",
+ fw:"PREP", tips:[
+ "Frame it as a positive choice to serve your own country, not a lack of options elsewhere.",
+ "If you've had opportunities abroad, briefly acknowledge them then explain why you chose this path."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"Why this uniform and not the Police Force or Fire Department? Brunei isn't at war — why join?",
+ fw:"Compare–Contrast", tips:[
+ "Distinguish the military's specific mission (defence, deterrence, sovereignty) from other uniformed services.",
+ "Address 'not at war' directly — deterrence and readiness matter precisely because conflict hasn't happened."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"When did you first become interested in the Service, and what personal contact have you had with it?",
+ fw:"Timeline + Evidence", tips:[
+ "Give a real timeframe and a specific contact point (a relative, an event, a recruitment talk).",
+ "Show the interest has been sustained, not just recently discovered."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"How did you go about researching what careers were available?",
+ fw:"Evidence-of-Research Framework", tips:[
+ "Name specific sources — talks, official info sessions, serving personnel — not just 'I looked online.'",
+ "Mention one thing that research changed about your expectations."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"You've highlighted the advantages of Service life — what do you regard as the disadvantages, and why?",
+ fw:"Balanced-Perspective", tips:[
+ "Name a genuine disadvantage (time away from family, loss of routine flexibility) rather than a fake one.",
+ "Show you accept the trade-off rather than minimising it."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"What do you understand by 'Regular Service'?",
+ fw:"Define → Example", tips:[
+ "Give a clear, simple definition distinguishing it from reserve or short-term service.",
+ "If unsure of exact local terminology, say what you understand and how you'd confirm it."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"What other Services or branches did you consider, and why this one?",
+ fw:"Compare–Contrast", tips:[
+ "Name a genuine alternative you considered, even briefly, to show real deliberation.",
+ "Explain the specific factor that tipped your decision toward this branch."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"Why do you want to join now, years after graduating?",
+ fw:"Timeline + Evidence", tips:[
+ "Explain what changed or matured your decision during that gap, rather than treating it as a delay to justify.",
+ "Show the interim time was used productively, strengthening rather than weakening your case."]},
+
+{cat:"Motivation & RBAF Knowledge", q:"What is RBAF's role in national defence, broadly?",
+ fw:"PEEL", tips:[
+ "State the core role (sovereignty, deterrence, internal security support) clearly first.",
+ "Support with one specific example of that role in practice."]},
+
+/* ===== NEW CATEGORY: Choice of Unit ===== */
+{cat:"Choice of Unit", q:"What do you know about RBLF, and what do you know about the Logistics Depot?",
+ fw:"Structured Fact Recall", tips:[
+ "Cover RBLF's role first, then narrow into the Logistics Depot's specific function within it.",
+ "Mention the chain of structure (battalion → company → platoon → section) to show depth of knowledge."]},
+
+{cat:"Choice of Unit", q:"What do you know about RBAirF, and what do you know about Wing No. 4?",
+ fw:"Structured Fact Recall", tips:[
+ "Cover RBAirF's overall role first, then Wing 4's specific function and assets.",
+ "If your essay had a mix-up between wings, make sure this verbal answer is fully consistent."]},
+
+{cat:"Choice of Unit", q:"Why this unit — briefly describe its role, task, and duties.",
+ fw:"PEEL", tips:[
+ "State the unit's core mission in one sentence before adding detail.",
+ "Link the unit's duties to why they specifically suit your skills or interest."]},
+
+{cat:"Choice of Unit", q:"Why Land or Air, and not Navy?",
+ fw:"Compare–Contrast", tips:[
+ "Show basic awareness of what Navy does, so the contrast isn't a knowledge gap.",
+ "Give a genuine, specific reason for your choice rather than 'I just prefer it.'"]},
+
+{cat:"Choice of Unit", q:"What assets and equipment does your unit and sub-unit use?",
+ fw:"Structured Fact Recall", tips:[
+ "Know a few concrete examples by name rather than a vague general answer.",
+ "If unsure of exact specifications, focus on function and role instead of guessing numbers."]},
+
+{cat:"Choice of Unit", q:"What do you know about your chosen unit's core values?",
+ fw:"Define → Example", tips:[
+ "Name the values specifically, not just 'discipline and teamwork' in general terms.",
+ "Give one example of what living out one of those values looks like day to day."]},
+
+{cat:"Choice of Unit", q:"Explain the structure of RBLF: battalions, companies, platoons, and sections.",
+ fw:"Structured Fact Recall", tips:[
+ "Memorise the hierarchy in order — this is a factual check, precision matters.",
+ "If unsure of exact current numbers, say what you know and note you'd confirm specifics."]},
+
+{cat:"Choice of Unit", q:"If applying to RBAirF: what type of aircraft would you like to fly operationally, and why?",
+ fw:"PREP", tips:[
+ "Name a specific aircraft type RBAirF actually operates, not an aspirational unrelated one.",
+ "Explain the operational role and connect it to a personal strength or interest."]},
+
+{cat:"Choice of Unit", q:"What is that aircraft used for, what weapons does it carry, and what is its peacetime role?",
+ fw:"Structured Fact Recall", tips:[
+ "Separate wartime and peacetime roles clearly — peacekeeping/patrol vs combat readiness.",
+ "If unsure of weapons specifics, focus on role and mission type instead."]},
+
+{cat:"Choice of Unit", q:"If you didn't get your first-choice unit, how would you feel, and how would you adapt?",
+ fw:"Realistic-Awareness Framework", tips:[
+ "Acknowledge honest disappointment is fine, but pivot quickly to commitment and adaptability.",
+ "Show you'd apply the same effort regardless of unit — the board is testing flexibility, not preference."]},
+
+/* ===== ADDITIONAL: Officer Cadet School Training ===== */
+{cat:"Officer Cadet School Training", q:"Why do you want to be an officer, and what is your preparation and biggest expected challenge for OCS?",
+ fw:"PREP + STAR hybrid", tips:[
+ "Answer 'why officer' first and directly, then move to preparation, then the honest challenge — don't blur the three together.",
+ "Keep each of the three parts to 2–3 sentences so the whole answer stays under 90 seconds."]},
+
+{cat:"Officer Cadet School Training", q:"What would you do if assigned to a different unit than requested? Would you consider Other Ranks if not commissioned? What will you do if you fail this FIB attempt?",
+ fw:"Realistic-Awareness + Resolve", tips:[
+ "Answer all three sub-questions directly and separately — don't dodge any of them.",
+ "Show flexibility on unit assignment, honest reflection on Other Ranks, and a concrete next step if unsuccessful."]},
+
+{cat:"Officer Cadet School Training", q:"What training would you undergo to become an officer, and what form does it take?",
+ fw:"Structured Fact Recall", tips:[
+ "Outline the general training pathway and stages you understand, in order.",
+ "If details are uncertain, be honest and show what you do know."]},
+
+{cat:"Officer Cadet School Training", q:"What particular problems might attending Officer Cadet Training cause you personally?",
+ fw:"Honest Self-Assessment + Mitigation Plan", tips:[
+ "Name a real personal constraint (family, health, logistics) rather than claiming none exist.",
+ "Immediately follow with how you're managing or planning around it."]},
+
+{cat:"Officer Cadet School Training", q:"How important is commissioned service to you, specifically?",
+ fw:"Direct, Reasoned Answer", tips:[
+ "Give a clear answer, not a hedge — the board wants to know your genuine level of commitment.",
+ "Support it with a reason tied to your longer-term goals."]},
+
+{cat:"Officer Cadet School Training", q:"How do you think you'll cope with military discipline, loss of personal freedom, and being away from home?",
+ fw:"Self-Awareness + Coping Strategy", tips:[
+ "Acknowledge it will be a real adjustment rather than claiming it will be effortless.",
+ "Reference a past experience with structure or separation from home as evidence you can adapt."]},
+
+{cat:"Officer Cadet School Training", q:"Would you apply through normal recruitment if unsuccessful at OCS?",
+ fw:"Direct, Reasoned Answer", tips:[
+ "Give a genuine answer — 'yes' shows resolve, but explain your reasoning either way.",
+ "Avoid a purely rehearsed-sounding 'yes' with no explanation."]},
+
+{cat:"Officer Cadet School Training", q:"Apart from your professional job, what additional duties might you be asked to do as a commissioned officer, and why?",
+ fw:"Structured Fact Recall", tips:[
+ "Mention duties like welfare responsibility, administration, or ceremonial roles if known.",
+ "Explain briefly why officers carry broader duties than their technical role alone."]},
+
+{cat:"Officer Cadet School Training", q:"What is the main reason RBAF sends personnel overseas for training, and why is it necessary?",
+ fw:"PEEL", tips:[
+ "State the main reason (exposure, interoperability, specialised training) clearly first.",
+ "Support with why domestic training alone wouldn't achieve the same outcome."]},
+
+{cat:"Officer Cadet School Training", q:"What bilateral training arrangements does RBAF have with ASEAN or neighbouring countries?",
+ fw:"Structured Fact Recall", tips:[
+ "Name any arrangements or joint exercises you're aware of, even briefly.",
+ "If unsure of specifics, mention the general principle of regional defence cooperation instead."]},
+
+{cat:"Officer Cadet School Training", q:"How do you feel about the personal risk from terrorist action that comes with this role?",
+ fw:"Honest, Composed Answer", tips:[
+ "Acknowledge the risk honestly rather than downplaying it unrealistically.",
+ "Frame your acceptance of that risk as part of a considered decision, not bravado."]},
+
+/* ===== ADDITIONAL: Leadership and Teamwork ===== */
+{cat:"Leadership and Teamwork", q:"Have you ever worked in a team environment? Elaborate.",
+ fw:"STAR", tips:[
+ "Pick one clear example rather than a general claim of teamwork experience.",
+ "Describe your specific role and contribution within the team, not just the team's outcome."]},
+
+{cat:"Leadership and Teamwork", q:"What leadership qualities do you think are important for an officer, and which do you possess?",
+ fw:"Define → Evidence", tips:[
+ "Name two or three qualities and define each briefly before claiming you possess them.",
+ "Back every claimed quality with one short, real example."]},
+
+{cat:"Leadership and Teamwork", q:"What leadership traits do you think are important for an officer, and which do you possess?",
+ fw:"Define → Evidence", tips:[
+ "Distinguish traits (character-level, e.g. integrity, resilience) from qualities/skills if asked both — avoid repeating the same list verbatim.",
+ "Pick traits you can evidence, not just ones that sound impressive."]},
+
+{cat:"Leadership and Teamwork", q:"Tell me about a time you contributed to a team working effectively.",
+ fw:"STAR", tips:[
+ "Focus on your specific contribution, not just what the team achieved overall.",
+ "Show cooperation, not just individual output."]},
+
+{cat:"Leadership and Teamwork", q:"What would you do if a team member wasn't pulling their weight?",
+ fw:"SBI (Situation–Behavior–Impact)", tips:[
+ "Describe a graduated approach: private conversation first, focused on specific behaviour and impact.",
+ "Show you'd escalate appropriately only if the direct approach didn't work."]},
+
+{cat:"Leadership and Teamwork", q:"How do you think you'll fit into a team environment at OCS?",
+ fw:"Self-Awareness + Evidence", tips:[
+ "Reference a past team environment with similar pressure or structure as evidence.",
+ "Acknowledge it will take adjustment, showing realistic self-awareness."]},
+
+{cat:"Leadership and Teamwork", q:"What qualities make a good team player?",
+ fw:"Define → Example", tips:[
+ "Name two or three qualities (reliability, communication, humility) and briefly define each.",
+ "Give one example of yourself demonstrating one of them."]},
+
+{cat:"Leadership and Teamwork", q:"Define leadership. Is a leader different from a manager? Are leaders born or made?",
+ fw:"Define → Compare → Position", tips:[
+ "Give your own working definition first, distinct from 'a manager tells people what to do.'",
+ "Take a clear position on born-vs-made — most credible answers say 'developed, with some natural inclination.'"]},
+
+{cat:"Leadership and Teamwork", q:"How do you ensure unity among your men, or get 30 men to obey you?",
+ fw:"Define → Example", tips:[
+ "Have a ready list: lead by example, competence, humility, care for their welfare, honesty, active listening, professionalism, firm-but-kind consistency.",
+ "Pick two or three from that list and back them with a brief example rather than reciting the whole list."]},
+
+{cat:"Leadership and Teamwork", q:"Active listening is sometimes an overlooked leadership trait — explain it.",
+ fw:"Define → Example → Application", tips:[
+ "Define it as fully hearing and understanding before responding, not just waiting to speak.",
+ "Give one example where active listening changed how you handled a situation."]},
+
+{cat:"Leadership and Teamwork", q:"What leadership lessons can be drawn from studying historical battles or leaders?",
+ fw:"Figure → Trait → Application", tips:[
+ "Pick one specific historical leader or battle you can speak to with real detail.",
+ "Extract one concrete lesson and explain how it applies to modern officership."]},
+
+{cat:"Leadership and Teamwork", q:"What can you say about RBAF's core value of loyalty?",
+ fw:"Define → Principle → Example", tips:[
+ "Define loyalty in a military context — to mission, chain of command, and subordinates simultaneously.",
+ "Give a brief example showing you understand loyalty isn't blind obedience."]},
+
+/* ===== NEW CATEGORY: Situational Judgement ===== */
+{cat:"Situational Judgement", q:"As a commander, one of your men is using drugs — what do you do?",
+ fw:"Task–Team–Individual (Priority Triage)", tips:[
+ "Address it through the proper process rather than either ignoring it or reacting purely punitively.",
+ "Note that RBAF policy tends to give a chance rather than immediate dismissal — mention you'd follow due process while protecting unit standards."]},
+
+{cat:"Situational Judgement", q:"How would you approach a subordinate who is lacking in physical fitness?",
+ fw:"Task–Team–Individual (Priority Triage)", tips:[
+ "Address it privately and constructively, with a specific improvement plan rather than public criticism.",
+ "Balance compassion with maintaining unit standards and mission readiness."]},
+
+{cat:"Situational Judgement", q:"If posted to lead 10 men on a ship or in the jungle, how would you lead them?",
+ fw:"Task–Team–Individual (Priority Triage)", tips:[
+ "Reference the mission objective first, then welfare and morale of the men, then your own needs last.",
+ "Mention clear communication of intent and delegating appropriately to experienced subordinates."]},
+
+{cat:"Situational Judgement", q:"One of your men has a family emergency while you're deployed in the jungle — how do you handle it?",
+ fw:"Task–Team–Individual (Priority Triage)", tips:[
+ "Show empathy for the individual while explaining how you'd balance it against mission and unit needs.",
+ "Mention escalating through proper channels (informing command, arranging support) rather than deciding unilaterally."]},
+
+{cat:"Situational Judgement", q:"Your men are exhausted mid-task in the jungle — what do you do?",
+ fw:"Task–Team–Individual (Priority Triage)", tips:[
+ "Weigh mission urgency against safety and welfare rather than pushing blindly through fatigue.",
+ "Mention practical steps: rest breaks, redistributing load, checking in individually."]},
+
+{cat:"Situational Judgement", q:"Your mission is compromised, you've taken a captive, and your radio is down — what do you do as leader?",
+ fw:"Task–Team–Individual (Priority Triage)", tips:[
+ "Prioritise in order: assess the immediate threat, secure your team and the captive, then re-establish communication or fall back to a rally point.",
+ "Show calm, structured decision-making rather than a single dramatic action."]},
+
+{cat:"Situational Judgement", q:"If posted as a regular soldier instead of an officer, are you willing?",
+ fw:"Direct, Reasoned Answer", tips:[
+ "Give a genuine 'yes' with reasoning tied to wanting to serve regardless of rank.",
+ "Avoid implying you'd only serve if commissioned — that undercuts your motivation narrative."]},
+
+/* ===== ADDITIONAL: General Knowledge / Security & History ===== */
+{cat:"General Knowledge / Security & History", q:"Define terrorism, and how would you prevent it? What's the difference between ISIS and 'terrorist' more generally?",
+ fw:"PEEL", tips:[
+ "Give a clear working definition before discussing prevention.",
+ "Distinguish ISIS as a specific organisation from terrorism as a broader tactic or phenomenon."]},
+
+{cat:"General Knowledge / Security & History", q:"What is a VX agent, and is there any recent news tied to it?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Give a brief, accurate description (a chemical nerve agent) without overstating your expertise.",
+ "If unsure of recent news, say so honestly rather than guessing."]},
+
+{cat:"General Knowledge / Security & History", q:"What is the current situation in Gaza?",
+ fw:"PEEL, balanced and non-partisan", tips:[
+ "Stick to widely reported facts and avoid personal political stances.",
+ "Keep it brief and measured — this is a current-affairs awareness check, not a debate."]},
+
+{cat:"General Knowledge / Security & History", q:"What are the key differences between civilian and military work?",
+ fw:"Compare–Contrast", tips:[
+ "Focus on structure, chain of command, and stakes as the core differences.",
+ "Avoid implying one is superior — frame it as different demands."]},
+
+{cat:"General Knowledge / Security & History", q:"What has been the biggest terrorist attack in history?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Give a factually accurate example with brief context.",
+ "Keep the tone measured given the sensitivity of the topic."]},
+
+{cat:"General Knowledge / Security & History", q:"Could an ISIS/Marawi-style threat use biochemical weapons in Brunei — how, and what's RBAF's role in responding?",
+ fw:"PEEL", tips:[
+ "Address plausibility briefly and factually, without being alarmist.",
+ "Mention the importance of CBRE (chemical, biological, radiological, explosive) response capability."]},
+
+{cat:"General Knowledge / Security & History", q:"What wars or major military historical conflicts are you aware of?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Name two or three you can speak to with real detail rather than listing many superficially.",
+ "Be ready for a follow-up question on whichever one you mention."]},
+
+{cat:"General Knowledge / Security & History", q:"What is defence diplomacy?",
+ fw:"Define → Example", tips:[
+ "Define it as using military relationships and engagement to achieve diplomatic and strategic goals.",
+ "Give an example like joint exercises or defence attaché relationships."]},
+
+{cat:"General Knowledge / Security & History", q:"What do you know about Brunei's Defence White Paper (2011 / 2021)?",
+ fw:"Structured Fact Recall", tips:[
+ "Know the general purpose and any key themes you're aware of.",
+ "If your essay referenced it, make sure your verbal answer is fully consistent with what you wrote."]},
+
+{cat:"General Knowledge / Security & History", q:"What is Industrial Revolution 4.0, and how is it relevant to defence?",
+ fw:"Define → Example → Application", tips:[
+ "Define it briefly as the shift toward automation, AI, and connected systems.",
+ "Link it to modern defence applications like cyber capability or unmanned systems."]},
+
+{cat:"General Knowledge / Security & History", q:"How could a country achieve military victory on a limited budget?",
+ fw:"PEEL", tips:[
+ "Focus on efficiency: strategic prioritisation, alliances, asymmetric tactics, and technology over sheer volume.",
+ "Use a brief historical or hypothetical example to illustrate."]},
+
+{cat:"General Knowledge / Security & History", q:"How do you initiate teamwork?",
+ fw:"Strategy + Example", tips:[
+ "Name concrete first steps: clarifying the goal, understanding each person's strengths, setting expectations early.",
+ "Back it with a short real example."]},
+
+{cat:"General Knowledge / Security & History", q:"What's the difference between bilateral and multilateral defence cooperation?",
+ fw:"Compare–Contrast", tips:[
+ "Define each simply — bilateral is two-party, multilateral is multi-party.",
+ "Give a brief example of each in a regional context."]},
+
+{cat:"General Knowledge / Security & History", q:"What cross-border issues affect Brunei (e.g. day trips to Miri)?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Name a specific, real cross-border issue you're aware of.",
+ "Keep it factual and low-key rather than speculative."]},
+
+{cat:"General Knowledge / Security & History", q:"How would you defend against a cyber attack, and how do you protect the nation from cybersecurity threats?",
+ fw:"PEEL", tips:[
+ "Mention layered defence: prevention, detection, response, and coordination across agencies.",
+ "Note the growing role of cyber in modern defence to show awareness beyond conventional threats."]},
+
+{cat:"General Knowledge / Security & History", q:"What is radicalisation, including online radicalisation?",
+ fw:"Define → Example → Application", tips:[
+ "Define it as the process by which someone adopts extremist views, increasingly via online platforms.",
+ "Note the military and security role in countering it, alongside community and education efforts."]},
+
+{cat:"General Knowledge / Security & History", q:"What is military intelligence?",
+ fw:"Define → Example", tips:[
+ "Define it as the gathering and analysis of information to support military decision-making.",
+ "Give a brief example of how it supports operational planning."]},
+
+{cat:"General Knowledge / Security & History", q:"What do you understand by 'protecting the nation's sovereignty,' and how do you protect it?",
+ fw:"Define → Principle → Example", tips:[
+ "Define sovereignty as a nation's independent authority over its territory and affairs.",
+ "Link protection of it to deterrence, defence readiness, and international law and diplomacy."]},
+
+{cat:"General Knowledge / Security & History", q:"What do you know about the Cold War?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Give a brief, accurate overview of the key powers and dynamics involved.",
+ "Mention one specific event (e.g. an arms race milestone or crisis) to show depth."]},
+
+{cat:"General Knowledge / Security & History", q:"What do you know about Adolf Hitler, WWI, WWII, and 9/11?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Have a brief, factual summary ready for each, not just one.",
+ "Keep the tone factual and measured given the gravity of the topics."]},
+
+{cat:"General Knowledge / Security & History", q:"Prepare one WWI/WWII (or other historical) figure as a 'turning-point hero' — who, and why?",
+ fw:"Figure → Trait → Application", tips:[
+ "Choose someone whose decision or action changed an outcome, and know the specific details.",
+ "Link the trait they showed to a quality relevant to officership."]},
+
+{cat:"General Knowledge / Security & History", q:"What do you know about the seizure of Limbang?",
+ fw:"Structured Fact Recall", tips:[
+ "Know the historical background and its regional significance.",
+ "This is Brunei-specific history — treat it as a 'must-know' rather than optional."]},
+
+/* ===== NEW CATEGORY: ASEAN & Regional Affairs ===== */
+{cat:"ASEAN & Regional Affairs", q:"Who is the chairman of ASEAN, how many member countries are there, and what is ASEAN+3?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Verify the current chair before your interview — this rotates annually.",
+ "Know all ASEAN member countries by name without hesitation."]},
+
+{cat:"ASEAN & Regional Affairs", q:"Could ASEAN form a NATO-style military pact?",
+ fw:"Balanced-Perspective", tips:[
+ "Acknowledge arguments for (collective security) and against (ASEAN's consensus-based, non-interference tradition).",
+ "Give your own reasoned view while respecting that this is a genuinely debated question."]},
+
+{cat:"ASEAN & Regional Affairs", q:"What are the aims and roles of ASEAN?",
+ fw:"PEEL", tips:[
+ "Cover economic, political-security, and socio-cultural pillars briefly.",
+ "Link it back to how it benefits Brunei's security and economy."]},
+
+{cat:"ASEAN & Regional Affairs", q:"What is ADMM / ADMM-Plus?",
+ fw:"Define → Example", tips:[
+ "Define it as the ASEAN Defence Ministers' Meeting (and its expanded Plus format with dialogue partners).",
+ "Mention its role in regional defence cooperation."]},
+
+{cat:"ASEAN & Regional Affairs", q:"What do you know about the South China Sea dispute and Chinese militarisation of the area?",
+ fw:"PEEL, balanced and non-partisan", tips:[
+ "Present the facts of the dispute and Brunei's claim neutrally.",
+ "Avoid taking an inflammatory stance — stick to measured, factual language."]},
+
+{cat:"ASEAN & Regional Affairs", q:"What is CARAT (Cooperation Afloat Readiness and Training)?",
+ fw:"Define → Example", tips:[
+ "Define it as a regional multilateral naval exercise programme.",
+ "Mention its purpose: interoperability and readiness among participating navies."]},
+
+{cat:"ASEAN & Regional Affairs", q:"What do you know about the One Belt One Road / Belt and Road Initiative, and Brunei's relationship with it?",
+ fw:"PEEL", tips:[
+ "Explain BRI briefly as China's infrastructure and investment initiative.",
+ "Note Brunei's economic relationship and any relevant investment, factually and neutrally."]},
+
+{cat:"ASEAN & Regional Affairs", q:"What do you know about the US–China trade war?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Give a brief, factual summary of the core dynamics.",
+ "Keep it non-partisan and focus on regional or economic implications where relevant."]},
+
+{cat:"ASEAN & Regional Affairs", q:"What regional training exercises is Brunei or RBAF involved in?",
+ fw:"Structured Fact Recall", tips:[
+ "Name any joint or regional exercises you're aware of.",
+ "If unsure of specifics, mention the general principle of regional defence cooperation."]},
+
+/* ===== NEW CATEGORY: Brunei National Affairs ===== */
+{cat:"Brunei National Affairs", q:"What is Wawasan 2035, and how does the military fit into it?",
+ fw:"Define → Example → Application", tips:[
+ "Define it as Brunei's long-term national vision (educated, high quality of life, dynamic economy).",
+ "Link the military's role to national stability enabling that vision."]},
+
+{cat:"Brunei National Affairs", q:"How dependent is Brunei on oil and gas, and should subsidies be cut?",
+ fw:"Balanced-Perspective", tips:[
+ "Acknowledge the economic reality of dependency, then present both sides of the subsidy debate.",
+ "Give a reasoned personal view without being dismissive of the trade-offs."]},
+
+{cat:"Brunei National Affairs", q:"What has been the effect of lifting oil price subsidies, and are you aware of current petrol/rice prices?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Verify current prices shortly before your interview — these figures change.",
+ "Briefly note the general economic effect (cost of living impact) rather than only reciting numbers."]},
+
+{cat:"Brunei National Affairs", q:"What are the causes of unemployment in Brunei, and how could it be solved?",
+ fw:"PEEL", tips:[
+ "Name two or three real causes (oil-and-gas dependency, skills mismatch, limited private-sector growth).",
+ "Offer one or two realistic solutions rather than only diagnosing the problem."]},
+
+{cat:"Brunei National Affairs", q:"How could Brunei improve foreign direct investment?",
+ fw:"PEEL", tips:[
+ "Mention current government focus areas like agriculture and economic diversification.",
+ "Keep suggestions realistic and grounded rather than idealistic."]},
+
+{cat:"Brunei National Affairs", q:"How could the younger generation be encouraged into farming?",
+ fw:"PREP", tips:[
+ "Suggest concrete incentives (education, technology, subsidies) rather than a vague 'more awareness.'",
+ "Link it to national food security and economic diversification goals."]},
+
+{cat:"Brunei National Affairs", q:"What do you know about renewable energy in Brunei?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Mention any known renewable energy initiatives or goals.",
+ "Keep the answer factual and brief unless asked to expand."]},
+
+{cat:"Brunei National Affairs", q:"How do Brunei's roads compare to Singapore's and Malaysia's? What about the Telisai and Temburong Bridges?",
+ fw:"Compare–Contrast", tips:[
+ "Give a balanced, factual comparison rather than an overly critical one.",
+ "For Temburong Bridge specifically, be ready to discuss both its benefits and any security considerations."]},
+
+{cat:"Brunei National Affairs", q:"How could sport or tourism be improved in Brunei?",
+ fw:"PREP", tips:[
+ "Offer one or two concrete, realistic suggestions rather than a generic 'invest more.'",
+ "Keep the tone constructive rather than critical of current efforts."]},
+
+{cat:"Brunei National Affairs", q:"How do Bruneian values compare to Western values, and does globalisation threaten the relevance of MIB?",
+ fw:"Balanced-Perspective", tips:[
+ "Present the tension respectfully — modernisation and tradition can coexist.",
+ "Avoid a dismissive stance on either side; show you understand MIB's role in national identity."]},
+
+{cat:"Brunei National Affairs", q:"Could or should Brunei have nuclear weapons? What are the implications with the US, and what's your opinion?",
+ fw:"Balanced-Perspective", tips:[
+ "Present the arguments for and against clearly and calmly — this is a sensitive, hypothetical question.",
+ "Give your own reasoned view while acknowledging the geopolitical complexity."]},
+
+{cat:"Brunei National Affairs", q:"How should drones be regulated in Brunei?",
+ fw:"PREP", tips:[
+ "Balance security and safety concerns against legitimate civilian and commercial use.",
+ "Suggest a proportionate approach rather than an outright ban stance."]},
+
+{cat:"Brunei National Affairs", q:"What do you know about dengue or other public health issues in Brunei?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Mention basic prevention awareness (vector control, public health campaigns).",
+ "Keep it brief unless probed further."]},
+
+{cat:"Brunei National Affairs", q:"What is this year's National Day theme, and what has Brunei's humanitarian involvement looked like?",
+ fw:"Fact-Based Current Awareness", tips:[
+ "Verify the current year's National Day theme before your interview.",
+ "Mention any known regional humanitarian or disaster-relief contributions."]},
+
+{cat:"Brunei National Affairs", q:"What is your opinion on LGBT issues?",
+ fw:"Balanced-Perspective", tips:[
+ "Answer calmly and respectfully, grounded in Brunei's values and law rather than a personal stance pushed either way.",
+ "Keep the answer measured and brief — this is testing composure as much as content."]},
+
+/* ===== NEW CATEGORY: RBAF Organisation & Improvement ===== */
+{cat:"RBAF Organisation & Improvement", q:"Describe RBAF's overall organisation.",
+ fw:"Structured Fact Recall", tips:[
+ "Outline the three services and general command structure.",
+ "Keep it high-level unless asked to go deeper into one branch."]},
+
+{cat:"RBAF Organisation & Improvement", q:"How can women contribute to RBAF, addressing gender inequality in the Service?",
+ fw:"PEEL", tips:[
+ "Speak to genuine roles and contributions rather than a token statement.",
+ "Acknowledge progress made while noting areas that could still improve."]},
+
+{cat:"RBAF Organisation & Improvement", q:"What is the importance of religion in the military, and how can MIB be embedded into ABDB?",
+ fw:"Define → Principle → Example", tips:[
+ "Speak to religion and MIB as a source of values, discipline, and national identity.",
+ "Keep the answer respectful and grounded rather than overly abstract."]},
+
+{cat:"RBAF Organisation & Improvement", q:"What is the importance of media to RBAF?",
+ fw:"PEEL", tips:[
+ "Mention public trust, recruitment, and transparency as key functions of media engagement.",
+ "Note the officer's personal role in representing the Service well publicly."]},
+
+{cat:"RBAF Organisation & Improvement", q:"How would you improve RBAF?",
+ fw:"PREP", tips:[
+ "Offer one or two realistic, specific suggestions rather than a sweeping critique.",
+ "Frame it constructively — you're proposing improvement, not criticising leadership."]},
+
+{cat:"RBAF Organisation & Improvement", q:"Be ready to speak for two minutes on current world events — covering ABDB, all three services, regional, and global news.",
+ fw:"Structured Fact Recall", tips:[
+ "Prepare this as a standing exercise — refresh it a day or two before your interview, not weeks ahead.",
+ "Structure it geographically (Brunei → region → world) so it flows logically under pressure."]}
+];
+
+/* ======================= PERSISTENCE (device-local storage) =======================
+   The browser has no room for a question bank this size in real cookies (they cap
+   around 4KB), so we use localStorage instead — it behaves the same way (saved only
+   on this device, persists between visits) but can hold far more data. */
+const LS_KEYS = {
+  settings: 'ocsPrep_settings_v1',
+  custom:   'ocsPrep_customQuestions_v1',
+  edits:    'ocsPrep_editedQuestions_v1',
+  deleted:  'ocsPrep_deletedIds_v1'
+};
+
+function lsGet(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch(e){ return fallback; }
+}
+function lsSet(key, value){
+  try{ localStorage.setItem(key, JSON.stringify(value)); return true; }
+  catch(e){ return false; }
+}
+
+BASE_DATA.forEach((d,i)=>{ d.id = 'base'+i; d.isCustom = false; });
+
+let settings = lsGet(LS_KEYS.settings, { interviewDate:'', interviewType:'AFCB', sessionTargetMin:30 });
+let customQuestions = lsGet(LS_KEYS.custom, []);
+let editedQuestions = lsGet(LS_KEYS.edits, {});
+let deletedIds = lsGet(LS_KEYS.deleted, []);
+
+function saveSettings(){ lsSet(LS_KEYS.settings, settings); }
+function saveCustom(){ lsSet(LS_KEYS.custom, customQuestions); }
+function saveEdits(){ lsSet(LS_KEYS.edits, editedQuestions); }
+function saveDeleted(){ lsSet(LS_KEYS.deleted, deletedIds); }
+
+let EFFECTIVE_DATA = [];
+function computeEffectiveData(){
+  const base = BASE_DATA
+    .filter(d => !deletedIds.includes(d.id))
+    .map(d => editedQuestions[d.id] ? Object.assign({}, d, editedQuestions[d.id], {id:d.id, isCustom:false}) : d);
+  const custom = customQuestions.filter(d => !deletedIds.includes(d.id));
+  EFFECTIVE_DATA = [...base, ...custom];
+  return EFFECTIVE_DATA;
+}
+computeEffectiveData();
+
+function getCATS(){
+  return ["All Files", ...Array.from(new Set(EFFECTIVE_DATA.map(d=>d.cat)))];
+}
+let CATS = getCATS();
+
+/* ======================= FRAMEWORK GUIDE DATA ======================= */
+const GUIDE = [
+{ id:"star", name:"STAR", steps:"Situation → Task → Action → Result",
+  when:"The default for almost any 'tell me about a time...' or reflective personal question — background, setbacks, achievements, challenges, leadership, teamwork.",
+  match:["star"],
+  template:"SITUATION — Set the scene in 1-2 sentences: where, when, what was at stake.\nTASK — What was your specific responsibility or goal in that moment?\nACTION — What did YOU actually do? Use 'I', not 'we'. This is the longest part.\nRESULT — What happened, ideally with a measurable or observable outcome — then one line on what you learned.",
+  example:"\"During my final year of school (Situation), I was made in charge of organising our class's community service project with a two-week deadline (Task). I split the group into three teams, set daily checkpoints, and personally stepped in when one team fell behind on logistics (Action). We delivered on time and the school asked us to repeat it the following year — it taught me that checking in early beats fixing problems late (Result).\""},
+
+{ id:"prep", name:"PREP", steps:"Point → Reason → Example → Point",
+  when:"Good for motivation and opinion-style questions — 'why did you...', 'what motivated you...', 'what do you hope to contribute'.",
+  match:["prep"],
+  template:"POINT — Answer the question directly in one sentence, first.\nREASON — Explain the 'why' behind that point.\nEXAMPLE — Back it with one concrete, real example.\nPOINT — Restate your answer briefly to close the loop.",
+  example:"\"I want to serve because I want responsibility for other people's wellbeing, not just my own performance (Point). That comes from watching my father lead his work team through a difficult period and seeing how much his people trusted him (Reason). I saw the same instinct in myself when I took charge of my volunteer group during a crisis and made sure everyone got home safely before I worried about my own tasks (Example). That's the kind of responsibility I want a career built around (Point).\""},
+
+{ id:"peel", name:"PEEL", steps:"Point → Evidence → Explain → Link",
+  when:"Best for factual or awareness questions — armed forces' role, security threats, civil-military relations, ethics. Keeps knowledge answers organised instead of rambling.",
+  match:["peel"],
+  template:"POINT — State the main fact or position clearly.\nEVIDENCE — Give a specific fact, example, or reference to support it.\nEXPLAIN — Explain why that evidence matters or what it shows.\nLINK — Connect it back to the question or to the officer's role.",
+  example:"\"The military's core role is national sovereignty and deterrence (Point). For example, regular joint exercises with regional partners maintain readiness and interoperability (Evidence). This shows defence isn't just reactive — it's about sustained preparedness (Explain). As a future officer, understanding that helps me see my own training as part of that bigger deterrence picture (Link).\""},
+
+{ id:"sbi", name:"SBI", steps:"Situation → Behavior → Impact",
+  when:"Specifically for feedback and interpersonal-method questions — 'how do you give constructive feedback', 'how do you handle disagreement'.",
+  match:["sbi"],
+  template:"SITUATION — Briefly describe when/where this happened.\nBEHAVIOR — Describe the specific, observable behaviour (not a character judgement).\nIMPACT — Explain the effect that behaviour had, then what you did or would do about it.",
+  example:"\"During a group project (Situation), one teammate kept missing our checkpoint deadlines (Behavior). It meant the rest of us had to absorb their share of the work last-minute (Impact). I spoke to them privately, focused on the missed deadlines rather than blaming them personally, and we agreed on smaller daily check-ins — after that, they stayed on track.\""},
+
+{ id:"compare", name:"Compare–Contrast", steps:"Define A → Define B → Key Difference → Your Position",
+  when:"For questions asking you to distinguish two things — officer vs enlisted, results vs relationships.",
+  match:["compare"],
+  template:"Define the first side briefly.\nDefine the second side briefly.\nName the key difference that actually matters for the question.\nState your own position or preference, with a reason.",
+  example:"\"Enlisted personnel execute specialised tasks with deep technical skill; officers plan, decide, and are responsible for the people executing those tasks (Define A/B). The key difference is scope of accountability — officers answer for outcomes beyond their own actions (Difference). I'm drawn to that broader responsibility because I've always gravitated toward roles where I'm answerable for a team, not just myself (Position).\""},
+
+{ id:"define", name:"Define → Example → Application", steps:"Define → Example → Application",
+  when:"For 'what does X mean to you' questions — discipline, accountability, values.",
+  match:["define"],
+  template:"DEFINE — Give a short, personal definition in your own words.\nEXAMPLE — Give one real example where you lived that definition out.\nAPPLICATION — Say how it will matter specifically at OCS or as an officer.",
+  example:"\"To me, discipline means doing the necessary thing even when no one is checking (Define). I kept up an early-morning training routine through a full school term with no one holding me accountable but myself (Example). That's the same discipline OCS will demand when the easy choice is to cut corners and no instructor is watching (Application).\""},
+
+{ id:"balanced", name:"Balanced-Perspective / Balanced-Argument", steps:"Acknowledge Both Sides → Your Reasoned Position → Guiding Principle",
+  when:"For tension-based questions with no single 'correct' extreme — results vs relationships, loyalty vs moral judgment, ethics in warfare.",
+  match:["balanced"],
+  template:"Acknowledge that both sides of the tension are genuinely valid.\nGive your own reasoned position — it's fine to lean one way with a clear 'because'.\nName a guiding principle (a rule, doctrine, or value) that helps resolve the tension in practice.",
+  example:"\"Loyalty to the chain of command and personal moral judgment can pull in different directions, and both matter (Acknowledge). My position is that officers follow lawful orders fully, but are not obligated to follow unlawful ones (Position). The guiding principle is that raising a concern through proper channels is professional — silent compliance with something clearly wrong is not the same as loyalty (Principle).\""},
+
+{ id:"timeline", name:"Timeline / Then → Now", steps:"Earlier Point → What Changed → Current State → Why It Matters",
+  when:"For questions tracking change over time — how long you've considered this career, how your leadership style has evolved.",
+  match:["timeline"],
+  template:"EARLIER — Where you started, with a rough timeframe.\nCHANGE — What specific event or realisation shifted things.\nNOW — Where you are today, described concretely.\nWHY IT MATTERS — What that progression shows about you (commitment, growth, self-awareness).",
+  example:"\"Two years ago I led mainly by directing people closely (Earlier). After a project where that approach caused friction, I realised the team needed more ownership, not more instructions (Change). Now I set clear goals and let people choose their own approach, checking in rather than directing (Now). That shift shows I can adapt my style based on what a team actually needs (Why it matters).\""},
+
+{ id:"priority", name:"Task–Team–Individual (Priority Triage)", steps:"Assess → Mission → People → Self",
+  when:"For situational/scenario leadership questions — a subordinate's problem, a jungle emergency, a compromised mission. Based on Adair's Action-Centred Leadership: balance the task, the team, and the individual.",
+  match:["priority","task–team","triage"],
+  template:"ASSESS — Briefly state what you'd check first (safety, facts, urgency).\nMISSION — What happens to the task/objective, and how you protect it.\nPEOPLE — How you look after the team or individual involved.\nSELF — Where your own position fits last, and how you'd report or escalate afterward.",
+  example:"\"First I'd assess how serious and immediate the issue is (Assess). I'd keep the mission moving where safely possible, adjusting the plan rather than abandoning it (Mission). I'd address the individual's welfare directly and fairly, involving the right people rather than deciding alone (People). Only once that's handled would I worry about how it affects me, and I'd report it up the chain honestly (Self).\""},
+
+{ id:"factrecall", name:"Structured Fact Recall / Current Awareness", steps:"Core Fact → Detail → Why It Matters",
+  when:"For pure knowledge-check questions — organisational structure, current affairs, historical facts, prices, dates. The board is checking whether you did your homework.",
+  match:["fact-based","fact recall"],
+  template:"CORE FACT — State the key fact directly and confidently.\nDETAIL — Add one or two specific supporting details (names, numbers, dates).\nWHY IT MATTERS — One line on relevance, or honestly note if you're unsure and how you'd find out.",
+  example:"\"ASEAN currently has ten member countries (Core Fact), including Brunei, which joined in 1984 shortly after independence (Detail). That founding membership is part of why regional cooperation matters so much to our defence posture (Why it matters).\""},
+
+{ id:"other", name:"General Structured Answer", steps:"Direct Answer → Supporting Detail → Personal Link",
+  when:"For any remaining or hybrid-labelled question not covered above — the same underlying discipline still applies.",
+  match:[],
+  template:"Answer the actual question in your first sentence — don't circle around it.\nAdd one or two specific, real supporting details.\nClose with a short line connecting it back to your fit for OCS or officer service.",
+  example:"\"Directly answer first, support with something concrete and real, then tie it back to why it matters for the role you're applying for — that structure works even when a question doesn't fit a named framework neatly.\""}
+];
+
+/* ======================= NAV: PRACTICE / GUIDE ======================= */
+document.querySelectorAll('.main-nav button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.main-nav button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-'+btn.dataset.page).classList.add('active');
+  });
+});
+
+function matchFrameworkId(label){
+  const lower = label.toLowerCase();
+  for(const g of GUIDE){
+    for(const key of g.match){
+      if(lower.includes(key)) return g.id;
+    }
+  }
+  return "other";
+}
+
+function jumpToGuide(fwLabel){
+  const id = matchFrameworkId(fwLabel);
+  document.querySelector('.main-nav button[data-page="guide"]').click();
+  requestAnimationFrame(()=>{
+    const el = document.getElementById('guide-'+id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+
+function renderGuide(){
+  const list = document.getElementById('guideList');
+  list.innerHTML = GUIDE.map(g=>`
+    <div class="fw-card" id="guide-${g.id}">
+      <div class="fw-card-head"><h3>${g.name}</h3></div>
+      <div class="steps">${g.steps}</div>
+      <div class="when">${g.when}</div>
+      <div class="template-label">Template</div>
+      <div class="template">${g.template}</div>
+      <div class="example-label">Worked Example</div>
+      <div class="example">${g.example}</div>
+    </div>
+  `).join('');
+}
+
+/* ======================= DECK LOGIC ======================= */
+let deck = [];
+let discarded = [];
+let currentCat = "All Files";
+
+function poolFor(cat){
+  return cat === "All Files" ? EFFECTIVE_DATA : EFFECTIVE_DATA.filter(d=>d.cat===cat);
+}
+function reshuffle(){
+  const pool = poolFor(currentCat);
+  deck = [...pool].sort(()=>Math.random()-0.5);
+  discarded = [];
+  updateStatus();
+}
+function updateStatus(){
+  const el = document.getElementById('deckStatus');
+  const pool = poolFor(currentCat);
+  el.innerHTML = `Deck ready. <b>${deck.length}</b> of ${pool.length} files remaining in this drawer.`;
+}
+function refreshAfterDataChange(){
+  computeEffectiveData();
+  CATS = getCATS();
+  if(!CATS.includes(currentCat)) currentCat = "All Files";
+  renderTabs();
+  reshuffle();
+  document.getElementById('cardStage').innerHTML =
+    '<div class="empty-state">Question bank updated. Press <strong>Draw Question</strong> to continue.</div>';
+  document.getElementById('fileCountLabel').textContent = EFFECTIVE_DATA.length + ' QUESTIONS ON FILE';
+}
+function renderTabs(){
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = '';
+  CATS.forEach(cat=>{
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (cat===currentCat ? ' active' : '');
+    const n = poolFor(cat).length;
+    btn.innerHTML = cat.toUpperCase() + ` <span class="count">(${n})</span>`;
+    btn.addEventListener('click', ()=>{
+      currentCat = cat;
+      reshuffle();
+      renderTabs();
+      stopQTimer(true);
+      document.getElementById('cardStage').innerHTML =
+        '<div class="empty-state">Drawer switched to <strong>'+cat.toUpperCase()+'</strong>. Press <strong>Draw Question</strong> to pull a file.</div>';
+    });
+    tabsEl.appendChild(btn);
+  });
+}
+
+/* ======================= PER-QUESTION STOPWATCH ======================= */
+let qSeconds = 0;
+let qInterval = null;
+let qRunning = false;
+
+function formatMMSS(sec){
+  const m = Math.floor(sec/60).toString().padStart(2,'0');
+  const s = Math.floor(sec%60).toString().padStart(2,'0');
+  return m+':'+s;
+}
+function tickQ(){
+  qSeconds++;
+  const disp = document.getElementById('qtimerDisplay');
+  if(disp) disp.textContent = formatMMSS(qSeconds);
+}
+function startQTimer(){
+  if(qRunning) return;
+  qRunning = true;
+  qInterval = setInterval(tickQ, 1000);
+  updateQButtons();
+}
+function pauseQTimer(){
+  qRunning = false;
+  clearInterval(qInterval);
+  updateQButtons();
+}
+function stopQTimer(silent){
+  qRunning = false;
+  clearInterval(qInterval);
+  qSeconds = 0;
+}
+function resetQTimer(){
+  qSeconds = 0;
+  const disp = document.getElementById('qtimerDisplay');
+  if(disp) disp.textContent = '00:00';
+  startQTimer();
+}
+function updateQButtons(){
+  const pauseBtn = document.getElementById('qtimerPauseBtn');
+  if(!pauseBtn) return;
+  pauseBtn.textContent = qRunning ? 'Pause' : 'Resume';
+}
+
+/* ======================= DRAW ======================= */
+function drawCard(){
+  if(deck.length === 0){
+    if(discarded.length === 0){ reshuffle(); }
+    else {
+      deck = [...discarded].sort(()=>Math.random()-0.5);
+      discarded = [];
+    }
+  }
+  const item = deck.pop();
+  discarded.push(item);
+  updateStatus();
+
+  const pool = poolFor(currentCat);
+  const fileNo = String(pool.length - deck.length).padStart(2,'0');
+
+  const stage = document.getElementById('cardStage');
+  stage.innerHTML = `
+    <div class="card">
+      <div class="card-head">
+        <span class="card-tag">${item.cat}</span>
+        <span class="card-file">FILE ${fileNo}/${pool.length}</span>
+      </div>
+      <div class="qtimer-bar">
+        <span class="qtimer-label">Answer Time</span>
+        <span class="qtimer-display" id="qtimerDisplay">00:00</span>
+        <div class="qtimer-btns">
+          <button class="btn" id="qtimerPauseBtn">Pause</button>
+          <button class="btn" id="qtimerResetBtn">Reset</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="q-label">Question</div>
+        <p class="q-text">&ldquo;${item.q}&rdquo;</p>
+        <div class="divider"></div>
+        <div class="fw-row">
+          <span class="fw-label">Recommended Framework</span>
+          <span class="fw-value" id="fwValueBtn">${item.fw}</span>
+          <span class="fw-hint">(click to view template &amp; example)</span>
+        </div>
+        <div class="tips-label">Structuring Tips</div>
+        <ul class="tips">
+          ${item.tips.map(t=>`<li>${t}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `;
+
+  qSeconds = 0;
+  qRunning = false;
+  clearInterval(qInterval);
+  startQTimer();
+
+  document.getElementById('qtimerPauseBtn').addEventListener('click', ()=>{
+    if(qRunning) pauseQTimer(); else startQTimer();
+  });
+  document.getElementById('qtimerResetBtn').addEventListener('click', resetQTimer);
+  document.getElementById('fwValueBtn').addEventListener('click', ()=> jumpToGuide(item.fw));
+}
+
+document.getElementById('drawBtn').addEventListener('click', drawCard);
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  reshuffle();
+  stopQTimer(true);
+  document.getElementById('cardStage').innerHTML =
+    '<div class="empty-state">Drawer reshuffled. Press <strong>Draw Question</strong> to begin.</div>';
+});
+
+/* ======================= OVERALL SESSION TIMER ======================= */
+let sessionSeconds = 0;
+let sessionInterval = null;
+let sessionRunning = false;
+let sessionTargetMin = 30;
+
+function formatHHMMSS(sec){
+  const h = Math.floor(sec/3600).toString().padStart(2,'0');
+  const m = Math.floor((sec%3600)/60).toString().padStart(2,'0');
+  const s = Math.floor(sec%60).toString().padStart(2,'0');
+  return h+':'+m+':'+s;
+}
+function tickSession(){
+  sessionSeconds++;
+  const disp = document.getElementById('sessionDisplay');
+  disp.textContent = formatHHMMSS(sessionSeconds);
+  disp.classList.toggle('over', sessionSeconds >= sessionTargetMin*60);
+}
+function updateSessionTargetLabel(){
+  document.getElementById('sessionTarget').textContent = 'Target: ' + sessionTargetMin + ' min';
+}
+
+document.getElementById('sessionStartBtn').addEventListener('click', ()=>{
+  const btn = document.getElementById('sessionStartBtn');
+  if(!sessionRunning){
+    sessionRunning = true;
+    sessionInterval = setInterval(tickSession, 1000);
+    btn.textContent = 'Pause';
+  } else {
+    sessionRunning = false;
+    clearInterval(sessionInterval);
+    btn.textContent = 'Start';
+  }
+});
+document.getElementById('sessionResetBtn').addEventListener('click', ()=>{
+  sessionRunning = false;
+  clearInterval(sessionInterval);
+  sessionSeconds = 0;
+  const disp = document.getElementById('sessionDisplay');
+  disp.textContent = '00:00:00';
+  disp.classList.remove('over');
+  document.getElementById('sessionStartBtn').textContent = 'Start';
+});
+document.getElementById('sessionApplyBtn').addEventListener('click', ()=>{
+  const val = parseInt(document.getElementById('sessionTargetInput').value, 10);
+  if(val && val > 0){
+    sessionTargetMin = val;
+    updateSessionTargetLabel();
+    settings.sessionTargetMin = val;
+    saveSettings();
+  }
+});
+
+/* ======================= CAMERA & RECORDING ======================= */
+let camStream = null;
+let mediaRecorder = null;
+let recordedChunks = [];
+
+const camWrap = document.getElementById('cameraWrap');
+const camEnableBtn = document.getElementById('camEnableBtn');
+const camDisableBtn = document.getElementById('camDisableBtn');
+const camRecordBtn = document.getElementById('camRecordBtn');
+const camStopBtn = document.getElementById('camStopBtn');
+const camNote = document.getElementById('camNote');
+const playbackBlock = document.getElementById('playbackBlock');
+const playbackVideo = document.getElementById('playbackVideo');
+const downloadLink = document.getElementById('downloadLink');
+
+camEnableBtn.addEventListener('click', async ()=>{
+  try{
+    camStream = await navigator.mediaDevices.getUserMedia({ video:true, audio:true });
+    camWrap.innerHTML = '<video id="liveVideo" autoplay muted playsinline></video>';
+    document.getElementById('liveVideo').srcObject = camStream;
+    camEnableBtn.disabled = true;
+    camDisableBtn.disabled = false;
+    camRecordBtn.disabled = false;
+    camNote.textContent = "Camera live. Recordings stay on this device — press Start Recording when you're ready to answer.";
+  } catch(err){
+    camNote.textContent = "Couldn't access camera/microphone (" + err.name + "). Check your browser's site permissions and that no other app is using the camera.";
+  }
+});
+
+camDisableBtn.addEventListener('click', ()=>{
+  if(camStream){
+    camStream.getTracks().forEach(t=>t.stop());
+    camStream = null;
+  }
+  camWrap.innerHTML = '<div class="camera-placeholder">Camera off.<br>Press "Enable Camera" to begin.</div>';
+  camEnableBtn.disabled = false;
+  camDisableBtn.disabled = true;
+  camRecordBtn.disabled = true;
+  camStopBtn.disabled = true;
+  camNote.textContent = "Video and audio stay on this device — nothing is uploaded.";
+});
+
+camRecordBtn.addEventListener('click', ()=>{
+  if(!camStream) return;
+  recordedChunks = [];
+  try{
+    mediaRecorder = new MediaRecorder(camStream, { mimeType:'video/webm' });
+  } catch(e){
+    mediaRecorder = new MediaRecorder(camStream);
+  }
+  mediaRecorder.ondataavailable = (e)=>{ if(e.data && e.data.size>0) recordedChunks.push(e.data); };
+  mediaRecorder.onstop = ()=>{
+    const blob = new Blob(recordedChunks, { type:'video/webm' });
+    const url = URL.createObjectURL(blob);
+    playbackVideo.src = url;
+    downloadLink.href = url;
+    const ts = new Date().toISOString().replace(/[:.]/g,'-');
+    downloadLink.download = 'ocs-answer-' + ts + '.webm';
+    playbackBlock.style.display = 'block';
+    const dot = camWrap.querySelector('.rec-dot');
+    if(dot) dot.remove();
+  };
+  mediaRecorder.start();
+  const dot = document.createElement('div');
+  dot.className = 'rec-dot';
+  dot.innerHTML = '<span class="dot"></span>REC';
+  camWrap.appendChild(dot);
+  camRecordBtn.disabled = true;
+  camStopBtn.disabled = false;
+  camNote.textContent = "Recording... press Stop Recording when you finish your answer.";
+});
+
+camStopBtn.addEventListener('click', ()=>{
+  if(mediaRecorder && mediaRecorder.state !== 'inactive'){
+    mediaRecorder.stop();
+  }
+  camRecordBtn.disabled = false;
+  camStopBtn.disabled = true;
+  camNote.textContent = "Recording saved below for playback and download.";
+});
+
+/* ======================= COUNTDOWN TO INTERVIEW ======================= */
+function renderCountdown(){
+  const display = document.getElementById('countdownDisplay');
+  const sub = document.getElementById('countdownSub');
+  if(!settings.interviewDate){
+    display.textContent = '— DAYS';
+    sub.textContent = 'Set your interview date below';
+    return;
+  }
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const target = new Date(settings.interviewDate + 'T00:00:00');
+  const diffDays = Math.round((target - today) / 86400000);
+  const typeLabel = settings.interviewType === 'FIB' ? 'FIB Interview' : 'AFCB Selection';
+
+  if(diffDays > 0){
+    display.textContent = diffDays + (diffDays===1 ? ' DAY' : ' DAYS');
+    sub.textContent = 'Until your ' + typeLabel + ' on ' + target.toDateString();
+  } else if(diffDays === 0){
+    display.textContent = 'TODAY';
+    sub.textContent = 'Your ' + typeLabel + ' is today — good luck.';
+  } else {
+    display.textContent = 'PASSED';
+    sub.textContent = typeLabel + ' date (' + target.toDateString() + ') has passed.';
+  }
+}
+function loadSettingsIntoForm(){
+  document.getElementById('interviewTypeInput').value = settings.interviewType || 'AFCB';
+  document.getElementById('interviewDateInput').value = settings.interviewDate || '';
+  document.getElementById('sessionTargetInput').value = settings.sessionTargetMin || 30;
+}
+document.getElementById('countdownSaveBtn').addEventListener('click', ()=>{
+  settings.interviewType = document.getElementById('interviewTypeInput').value;
+  settings.interviewDate = document.getElementById('interviewDateInput').value;
+  saveSettings();
+  renderCountdown();
+  const ind = document.getElementById('savedIndicator');
+  ind.textContent = 'saved ✓';
+  setTimeout(()=>{ ind.textContent = 'settings saved on this device'; }, 2000);
+});
+
+/* ======================= MANAGE QUESTIONS ======================= */
+let editingId = null;
+
+function populateCatDatalist(){
+  const dl = document.getElementById('mgmtCatList');
+  const filterSel = document.getElementById('mgmtCatFilter');
+  const cats = Array.from(new Set(EFFECTIVE_DATA.map(d=>d.cat))).sort();
+  dl.innerHTML = cats.map(c=>`<option value="${c}">`).join('');
+  const currentFilter = filterSel.value;
+  filterSel.innerHTML = '<option value="">All Categories</option>' + cats.map(c=>`<option value="${c}">${c}</option>`).join('');
+  if(cats.includes(currentFilter)) filterSel.value = currentFilter;
+}
+
+function renderManageList(){
+  const search = document.getElementById('mgmtSearch').value.trim().toLowerCase();
+  const catFilter = document.getElementById('mgmtCatFilter').value;
+  let items = [...EFFECTIVE_DATA];
+  if(catFilter) items = items.filter(d=>d.cat===catFilter);
+  if(search) items = items.filter(d => d.q.toLowerCase().includes(search) || d.cat.toLowerCase().includes(search));
+
+  document.getElementById('mgmtCount').textContent = `Showing ${items.length} of ${EFFECTIVE_DATA.length}`;
+
+  const list = document.getElementById('mgmtList');
+  if(items.length === 0){
+    list.innerHTML = '<div class="empty-state">No questions match that search.</div>';
+    return;
+  }
+  list.innerHTML = items.map(d => `
+    <div class="mgmt-row" data-id="${d.id}">
+      <div class="mgmt-row-main">
+        <span class="mgmt-row-tag">${d.cat}</span>
+        ${d.isCustom ? '<span class="mgmt-custom-badge">custom</span>' : (editedQuestions[d.id] ? '<span class="mgmt-custom-badge">edited</span>' : '')}
+        <p class="mgmt-row-q">&ldquo;${d.q}&rdquo;</p>
+        <div class="mgmt-row-fw">${d.fw}</div>
+      </div>
+      <div class="mgmt-row-btns">
+        <button class="btn" data-action="edit" data-id="${d.id}">Edit</button>
+        <button class="btn danger" data-action="delete" data-id="${d.id}">Delete</button>
+      </div>
+    </div>
+  `).join('');
+
+  list.querySelectorAll('button[data-action="edit"]').forEach(btn=>{
+    btn.addEventListener('click', ()=> startEdit(btn.dataset.id));
+  });
+  list.querySelectorAll('button[data-action="delete"]').forEach(btn=>{
+    btn.addEventListener('click', ()=> deleteQuestion(btn.dataset.id));
+  });
+}
+
+function startEdit(id){
+  const item = EFFECTIVE_DATA.find(d=>d.id===id);
+  if(!item) return;
+  editingId = id;
+  document.getElementById('mgmtFormTitle').textContent = 'Edit Question';
+  document.getElementById('mgmtCat').value = item.cat;
+  document.getElementById('mgmtFw').value = item.fw;
+  document.getElementById('mgmtQ').value = item.q;
+  document.getElementById('mgmtTips').value = item.tips.join('\n');
+  document.getElementById('mgmtSaveBtn').textContent = 'Save Changes';
+  document.getElementById('mgmtCancelBtn').style.display = 'inline-block';
+  document.getElementById('mgmtFormMsg').textContent = '';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function resetForm(){
+  editingId = null;
+  document.getElementById('mgmtFormTitle').textContent = 'Add a New Question';
+  document.getElementById('mgmtCat').value = '';
+  document.getElementById('mgmtFw').value = '';
+  document.getElementById('mgmtQ').value = '';
+  document.getElementById('mgmtTips').value = '';
+  document.getElementById('mgmtSaveBtn').textContent = 'Add Question';
+  document.getElementById('mgmtCancelBtn').style.display = 'none';
+}
+
+function deleteQuestion(id){
+  if(!confirm('Remove this question from your deck? You can restore it later with "Restore Defaults".')) return;
+  const isCustom = customQuestions.some(d=>d.id===id);
+  if(isCustom){
+    customQuestions = customQuestions.filter(d=>d.id!==id);
+    saveCustom();
+  } else {
+    if(!deletedIds.includes(id)) deletedIds.push(id);
+    saveDeleted();
+    delete editedQuestions[id];
+    saveEdits();
+  }
+  refreshAfterDataChange();
+  populateCatDatalist();
+  renderManageList();
+  if(editingId === id) resetForm();
+}
+
+document.getElementById('mgmtSaveBtn').addEventListener('click', ()=>{
+  const cat = document.getElementById('mgmtCat').value.trim();
+  const fw = document.getElementById('mgmtFw').value.trim();
+  const q = document.getElementById('mgmtQ').value.trim();
+  const tips = document.getElementById('mgmtTips').value.split('\n').map(t=>t.trim()).filter(Boolean);
+  const msg = document.getElementById('mgmtFormMsg');
+
+  if(!cat || !q || tips.length === 0){
+    msg.textContent = 'Category, question, and at least one tip are required.';
+    msg.style.color = 'var(--redstamp-bright)';
+    return;
+  }
+  const fwFinal = fw || 'General Structured Answer';
+
+  if(editingId){
+    const isCustom = customQuestions.some(d=>d.id===editingId);
+    if(isCustom){
+      const idx = customQuestions.findIndex(d=>d.id===editingId);
+      customQuestions[idx] = Object.assign({}, customQuestions[idx], {cat, fw:fwFinal, q, tips});
+      saveCustom();
+    } else {
+      editedQuestions[editingId] = {cat, fw:fwFinal, q, tips};
+      saveEdits();
+    }
+    msg.textContent = 'Saved.';
+  } else {
+    const newItem = { id: 'c'+Date.now()+Math.floor(Math.random()*1000), cat, fw:fwFinal, q, tips, isCustom:true };
+    customQuestions.push(newItem);
+    saveCustom();
+    msg.textContent = 'Question added.';
+  }
+  msg.style.color = 'var(--brass-bright)';
+  refreshAfterDataChange();
+  populateCatDatalist();
+  renderManageList();
+  resetForm();
+});
+
+document.getElementById('mgmtCancelBtn').addEventListener('click', resetForm);
+document.getElementById('mgmtSearch').addEventListener('input', renderManageList);
+document.getElementById('mgmtCatFilter').addEventListener('change', renderManageList);
+
+document.getElementById('mgmtResetBtn').addEventListener('click', ()=>{
+  if(!confirm('This will remove all your added, edited, and deleted questions and restore the original 175-question bank. Continue?')) return;
+  customQuestions = [];
+  editedQuestions = {};
+  deletedIds = [];
+  saveCustom(); saveEdits(); saveDeleted();
+  refreshAfterDataChange();
+  populateCatDatalist();
+  renderManageList();
+  resetForm();
+});
+
+/* ======================= INIT ======================= */
+sessionTargetMin = settings.sessionTargetMin || 30;
+renderTabs();
+reshuffle();
+renderGuide();
+updateSessionTargetLabel();
+loadSettingsIntoForm();
+renderCountdown();
+setInterval(renderCountdown, 60000);
+populateCatDatalist();
+renderManageList();
+document.getElementById('fileCountLabel').textContent = EFFECTIVE_DATA.length + ' QUESTIONS ON FILE';
+</script>
+</body>
+</html>
