@@ -1200,6 +1200,14 @@ const BASE_DATA = [
  "Give one example showing the more developed version of your style in action."]},
 
 /* ===== ADDITIONAL: Personal Background ===== */
+{cat:"Personal Background", q:"Tell me about yourself in two minutes — walk me through your working and educational background, and the key takeaways from your experience.",
+ fw:"Chronological Walkthrough + Key Takeaway", opener:true, tips:[
+ "This is fixed as your opening question — treat it as the real thing and rehearse it until it's tight, not just familiar.",
+ "Move chronologically (education → work) rather than jumping around — it's easier to follow and sounds more composed.",
+ "For each stage, give one sentence of fact and one sentence of what it taught you — don't just recite a timeline.",
+ "End with a one-line 'so what': the two or three takeaways that are actually relevant to becoming an officer.",
+ "Two minutes is a hard ceiling, not a target — time yourself with the stopwatch above until you land it with room to spare."]},
+
 {cat:"Personal Background", q:"Tell me something not in your resume.",
  fw:"Direct Reveal + Link", tips:[
  "Pick something genuinely absent from your paperwork — a trait, story, or quality — not a fact they could already see.",
@@ -2009,6 +2017,13 @@ function poolFor(cat){
 function reshuffle(){
   const pool = poolFor(currentCat);
   deck = [...pool].sort(()=>Math.random()-0.5);
+  // "Tell me about yourself" is fixed as the opening question whenever it's in the current pool —
+  // move it to the end of the deck array since drawCard() pops from the end.
+  const openerIdx = deck.findIndex(d=>d.opener);
+  if(openerIdx !== -1){
+    const [opener] = deck.splice(openerIdx, 1);
+    deck.push(opener);
+  }
   discarded = [];
   updateStatus();
 }
